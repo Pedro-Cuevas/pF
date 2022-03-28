@@ -48,7 +48,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Ofertas</a></li>
-                    <li><a class="getstarted scrollto" href="./register.html">Registrarse</a></li>
+                    <li><a class="getstarted scrollto" href="./register.html">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -61,23 +61,58 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
         <div class="container1" style="width: 30rem;">
-            <form class="needs-validation" novalidate>
-                <div class="row g-3">  
+            <form class="needs-validation" novalidate></form>
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="col-sm-12">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                    </div>
+                    <br>
+    
+                    <div class="col-sm-12">
+                        <label for="surname" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="surname" placeholder="" value="" required>
+                    </div>
+                    <br>
+    
+                    <div class="col-sm-12">
+                        <label for="resume" class="form-label">Estudios</label>
+                        <input type="text" class="form-control" id="resume" placeholder="" value="" required>
+                    </div>
+                    <br>
+                </div>
+                <div class="col">
                     <div class="col-12">
                         <label for="email" class="form-label">Email <span class="text-muted"></span></label>
                         <input type="email" class="form-control" id="email" placeholder="you@example.com">
                     </div>
+                    <br>
+    
+                    <div class="col-sm-12">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" id="password" placeholder="" value="" required>
+                    </div>
+                    <br>
+    
+                    <div class="col-sm-12">
+                        <label for="rpassword" class="form-label">Repetir contraseña</label>
+                        <input type="text" class="form-control" id="rpassword" placeholder="" value="" required>
+                    </div>
+                    <br>
+    
+                    <div class="col-sm-12">
+                        <label for="cv" class="form-label">Subir CV</label>
+                        <input type="file" class="form-control" aria-label="file example" required>
+                    </div>
+                    <br>
                 </div>
-                <br>
-                <div class="col-sm-6">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" id="password" placeholder="" value="" required>
+  
                 </div>
-                <br>
-                <button class="w-100 btn btn-primary btn-lg" type="submit">LOGIN</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Crear cuenta</button>
+            </div>
+
             </form>
         </div>
 
