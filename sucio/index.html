@@ -35,8 +35,8 @@
     ======================================================== -->
 
 </head>
-<body>
 
+<body>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -47,8 +47,11 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="getstarted" href="index.html/user/login">Login o registro</a></li>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">Ofertas</a></li>
+                <li><a class="getstarted scrollto" href="#footer">login / registro</a></li>
             </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->
@@ -59,8 +62,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <h1 data-aos="fade-up">Bienvenido a Telefónica</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Queremos hacer nuestro mundo más humano, conectando la vida de las personas</h2>
+                <h1 data-aos="fade-up">Bienvenido a Telefónica Empleos</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">En Telefónica no somos nada sin el talento de nuestro equipo</h2>
                 <div data-aos="fade-up" data-aos-delay="600">
                     <div class="text-center text-lg-start">
                         <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
@@ -79,40 +82,6 @@
 </section><!-- End Hero -->
 
 <main id="main">
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-
-        <div class="container" data-aos="fade-up">
-            <div class="row gx-0">
-
-                <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="content">
-                        <h3>Sobre nosotros</h3>
-                        <h2>En Telefónica, pensamos que son las personas las que dan sentido a la tecnología y no al revés</h2>
-                        <p>
-                            En un momento en el que la tecnología está más presente que nunca en nuestras vidas, no podemos olvidar que las conexiones más importantes son las conexiones humanas. Porque en la sociedad de hoy en día, la calidad de vida de las personas depende en gran medida de esa conexión.
-                        </p>
-                        <p>
-                            Y es aquí donde entramos nosotros. Ofreciendo conexiones que unan a las personas, en lugar de aislarlas; conexiones que inviten a las personas a ser ellas mismas, a expresarse, a compartir.
-                        </p>
-                        <div class="text-center text-lg-start">
-                            <a href="https://www.telefonica.com/es/nosotros/mision/" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>Nuestra Misión</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ytUkYE4YqTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-
-            </div>
-        </div>
-
-    </section><!-- End About Section -->
-
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
         <div class="container" data-aos="fade-up">
@@ -121,10 +90,20 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="count-box">
+                        <i class="bi bi-eyeglasses" style="color: #bb0852;"></i>
+                        <div>
+                            <span data-purecounter-start="0" data-purecounter-end="97" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>años conectando talento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="count-box">
                         <i class="bi bi-emoji-smile"></i>
                         <div>
-                            <span data-purecounter-start="0" data-purecounter-end="316" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>millones de usuarios</p>
+                            <span data-purecounter-start="0" data-purecounter-end="113182" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>miembros de nuestro equipo</p>
                         </div>
                     </div>
                 </div>
@@ -139,103 +118,51 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="count-box">
-                        <i class="bi bi-eyeglasses" style="color: #bb0852;"></i>
-                        <div>
-                            <span data-purecounter-start="0" data-purecounter-end="97" data-purecounter-duration="1" class="purecounter"></span>
-                            <p>años de historia</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
     </section><!-- End Counts Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
 
-    <!-- ======= services Section ======= -->
-    <section id="services" class="features">
+        <div class="container" data-aos="fade-up">
+            <div class="row gx-0">
 
-        <section class="container" data-aos="fade-up">
-            <!-- Feature Tabs -->
-            <div class="row feture-tabs" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <h3>Servicios que ofrecemos</h3>
-
-                    <!-- Tabs -->
-                    <ul class="nav nav-pills mb-3">
-                        <li>
-                            <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Consultoría tecnológica</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" data-bs-toggle="pill" href="#tab2">Gestión de proyectos</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" data-bs-toggle="pill" href="#tab3">Otros servicios</a>
-                        </li>
-                    </ul><!-- End Tabs -->
-
-                    <!-- Tab Content -->
-                    <div class="tab-content">
-
-                        <div class="tab-pane fade show active" id="tab1">
-                            <p>En telefónica, pondremos los mejores expertos del sector al servicio de tu empresa.</p>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check2"></i>
-                                <h4>Haz crecer tu empresa con nosotros</h4>
-                            </div>
-                            <p>Tendrás un equipo dedicado al 100% a optimizar tu negocio.</p>
-                        </div><!-- End Tab 1 Content -->
-
-                        <div class="tab-pane fade show" id="tab2">
-                            <p>Nuestros más de 90 años de historia lo demuestran: no hay ninguna empresa capaz de aportar más experiencia a tus proyectos.</p>
-                        </div><!-- End Tab 2 Content -->
-
-                        <div class="tab-pane fade show" id="tab3">
-                            <p>Ponte en contacto con nosotros para explicarnos cómo podemos ayudarte.</p>
-                            <div class="text-center text-lg-start">
-                                <a href="contacto.html" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                    <span>Formulario de Contacto</span>
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div><!-- End Tab 3 Content -->
+                <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="content">
+                        <h3>Ofertas</h3>
+                        <h2>En Telefónica, pensamos que son las personas las que dan sentido a la tecnología y no al revés</h2>
+                        <p>
+                            En Telefónica, conectamos a las personas gracias al talento que conforma nuestro equipo
+                        </p>
+                        <p>
+                            Queremos a gente que se sume a nosotros y que quiera crear la Telefónica del futuro. ¿Te atreves?
+                        </p>
+                        <div class="text-center text-lg-start">
+                            <a href="https://www.telefonica.com/es/nosotros/mision/" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                                <span>Buscador de ofertas</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-
                 </div>
 
-                <div class="col-lg-6">
-                    <img src="assets/img/features-2.png" class="img-fluid" alt="">
+                <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eolI2hxpHHQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-        </div><!-- End services Tabs -->
-        </section>
-    </section>
+
+            </div>
+        </div>
+
+    </section><!-- End About Section -->
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
-
-    <div class="footer-newsletter">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12 text-center">
-                    <h4>Suscríbete a nuestra newsletter</h4>
-                    <p>Te informaremos de las últimas noticias sobre Telefónica</p>
-                </div>
-                <div class="col-lg-6">
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Suscribirse">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="footer-top">
         <div class="container">
             <div class="row gy-4">
-                <div class="col-lg-5 col-md-12 footer-info">
+                <div class="col-lg-6 col-md-12 footer-info">
                     <a href="index.html" class="logo d-flex align-items-center">
                         <img src="assets/img/logo.png" alt="">
                     </a>
@@ -248,19 +175,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6 footer-links">
-                    <h4>Links Útiles</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#about">Nosotros</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#services">Servicios</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#accionistas">Accionistas</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="https://www.telefonica.com/es/sostenibilidad-innovacion/privacidad-seguridad/privacidad/">Política de Privacidad</a></li>
-                    </ul>
-                </div>
-
-
-                <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
+                <div class="col-lg-6 col-md-12 footer-contact text-center text-md-start">
                     <h4>Datos de contacto</h4>
                     <p>
                         CALLE GRAN VIA, 28 <br>
