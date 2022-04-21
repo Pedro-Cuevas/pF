@@ -1,6 +1,6 @@
-package com.telefonica.p7.service;
+package com.telefonica.pF.service;
 
-import com.telefonica.p7.model.Application;
+import com.telefonica.pF.model.Application;
 
 public interface ApplicationsService {
     Iterable<Application> getApplications();

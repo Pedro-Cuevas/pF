@@ -1,7 +1,7 @@
-package com.telefonica.p7.controller;
+package com.telefonica.pF.controller;
 
-import com.telefonica.p7.model.Offer;
-import com.telefonica.p7.service.OfferService;
+import com.telefonica.pF.model.Offer;
+import com.telefonica.pF.service.OfferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

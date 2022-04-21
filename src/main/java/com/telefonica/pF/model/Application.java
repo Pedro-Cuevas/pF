@@ -1,4 +1,4 @@
-package com.telefonica.p7.model;
+package com.telefonica.pF.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;

@@ -1,8 +1,8 @@
-package com.telefonica.p7.service.implementation;
+package com.telefonica.pF.service.implementation;
 
-import com.telefonica.p7.repository.OfferRepository;
-import com.telefonica.p7.service.OfferService;
-import com.telefonica.p7.model.Offer;
+import com.telefonica.pF.model.Offer;
+import com.telefonica.pF.repository.OfferRepository;
+import com.telefonica.pF.service.OfferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

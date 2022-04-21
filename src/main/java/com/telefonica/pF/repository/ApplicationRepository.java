@@ -1,6 +1,6 @@
-package com.telefonica.p7.repository;
+package com.telefonica.pF.repository;
 
-import com.telefonica.p7.model.Application;
+import com.telefonica.pF.model.Application;
 
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -1,13 +1,13 @@
-package com.telefonica.p7;
+package com.telefonica.pF;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class P7Application {
+public class PFApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(P7Application.class, args);
+		SpringApplication.run(PFApplication.class, args);
 	}
 
 }
