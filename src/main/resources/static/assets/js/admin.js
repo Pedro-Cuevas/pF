@@ -166,6 +166,7 @@ const editOffer = async (id) => {
             boton.outerHTML = '<button type="button" class="btn btn-primary mt-1" id="btnCambios">Guardar cambios</button>';
         }
         
+        $('#btnCambios').off('click');
         $('#btnCambios').click(() => updateOffers(id));
         
     }
