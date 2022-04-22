@@ -46,8 +46,8 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Ofertas</a></li>
-                    <li><a class="getstarted scrollto" href="./user.html" id="nombreLogin"> Hola </a></li>
+                    <li><a class="nav-link scrollto" href="./search.html">Ofertas</a></li>
+                    <li><a class="getstarted scrollto" href="./user.html" id="nombreLogin"> [NOMBRE] </a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -61,7 +61,7 @@
         <!-- Feature Tabs -->
         <div class="row feture-tabs" data-aos="fade-up">
             <div class="col-lg-6">
-                <h3>[NOMBRE DE USUARIO]</h3>
+                <h3 id="nombreUsuario">[NOMBRE DE USUARIO]</h3>
 
                 <!-- Tabs -->
                 <ul class="nav nav-pills mb-3">
@@ -77,7 +77,19 @@
                 <div class="tab-content">
 
                     <div class="tab-pane fade show active" id="tab1">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum illo maxime autem, quo ratione dolore tenetur! Tenetur autem laudantium molestiae soluta velit, hic magni nesciunt repellendus maxime dolore ab eaque.</p>
+                        <p> Email:</p>
+                        <div class="card">
+                            <div class="card-body" id="email">
+                                Email: 
+                            </div>
+                        </div>
+                        <br>
+                        <p> Estudios:</p>
+                        <div class="card">
+                            <div class="card-body" id="studies">
+                                Estudios: 
+                            </div>
+                        </div>
                     </div><!-- End Tab 1 Content -->
 
                     <div class="tab-pane fade show" id="tab2">
@@ -163,8 +175,6 @@
 <!-- Login JS File -->
 <script src="assets/js/user.js"></script>
 
-<!-- Login JS File -->
-<script src="assets/js/login.js"></script>
 
 </body>
 </html>

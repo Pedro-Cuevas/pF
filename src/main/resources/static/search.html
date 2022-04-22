@@ -48,7 +48,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Ofertas</a></li>
-                    <li><a class="getstarted scrollto" href="./register.html">[Nombre de usuario]</a></li>
+                    <li><a class="getstarted scrollto" href="./register.html" id="nombreLogin">[Nombre]</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -60,26 +60,29 @@
     <br>
     <br>
     <section>
-        <form class="needs-validation" novalidate>
-            <div class="row g-4">  
-                <div class="col-lg-3">
-                    <label for="keyword" class="form-label">Palabra clave <span class="text-muted"></span></label>
-                    <input type="text" class="form-control" id="keyword">
+        <div class="container">
+            <form class="needs-validation" novalidate>
+                <div class="row g-4">  
+                    <div class="col-lg-3">
+                        <label for="keyword" class="form-label">Palabra clave <span class="text-muted"></span></label>
+                        <input type="text" class="form-control" id="keyword">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="destiny" class="form-label">Ciudad destino <span class="text-muted"></span></label>
+                        <input type="text" class="form-control" id="destiny">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="typeJob" class="form-label">Tipo de trabajo <span class="text-muted"></span></label>
+                        <input type="text" class="form-control" id="typeJob">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="blank" class="form-label"> <span class="text-muted"></span></label>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">BUSCAR</button>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <label for="destiny" class="form-label">Ciudad destino <span class="text-muted"></span></label>
-                    <input type="text" class="form-control" id="destiny">
-                </div>
-                <div class="col-lg-3">
-                    <label for="typeJob" class="form-label">Tipo de trabajo <span class="text-muted"></span></label>
-                    <input type="text" class="form-control" id="typeJob">
-                </div>
-                <div class="col-lg-3">
-                    <label for="blank" class="form-label"> <span class="text-muted"></span></label>
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">BUSCAR</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        
     </section>
     <center>
         <div class="col-lg-8" id="offerList"></div>

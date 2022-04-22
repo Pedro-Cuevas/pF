@@ -1,5 +1,3 @@
-//let nombreUsuario = "hola";
-
 const getUsers = async () => {
     let userEmail = $('#email').val();
     console.log(userEmail);
@@ -10,7 +8,7 @@ const getUsers = async () => {
     
         if(request.ok) {
             let res = await request.json();
-            console.log(res);
+            //console.log(res);
         }
     } else {
         let request = await fetch("/api/v1/users/?userEmail=" + userEmail, {
@@ -19,10 +17,11 @@ const getUsers = async () => {
     
         if(request.ok) {
             let res = await request.json();
-            setNombre(res[0].userName);
+            localStorage.setItem("userName", res[0].userName);
+            localStorage.setItem("userSurname", res[0].userSurname);
+            localStorage.setItem("userEmail", res[0].userEmail);
+            localStorage.setItem("userStudies", res[0].userStudies);
 
-            //top.nombre = res[0].userName;
-            //top.nombre = "hola";
             window.location ="./user.html";
             /*exists = false;
             let id = $('#email').val();
@@ -51,13 +50,4 @@ if(document.getElementById("btnLogin") != null){
         event.preventDefault()
     });
 }
-
-/*
-const setNombre = (nombre) => {
-    nombreUsuario = nombre;
-}
-
-const getNombre = () => {
-    return nombreUsuario;
-}*/
 

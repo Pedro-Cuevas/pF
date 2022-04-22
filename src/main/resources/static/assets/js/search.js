@@ -1,3 +1,11 @@
+const getNombre = () => {
+    return localStorage.getItem("userName");
+}
+
+const setNombre = (nombre) => {
+    document.getElementById("nombreLogin").innerHTML = nombre;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // gets the new list of offers and displays it
 const getOffersAndDisplay = async () => {
@@ -7,7 +15,7 @@ const getOffersAndDisplay = async () => {
 
     if(request.ok) {
         let res = await request.json();
-        console.log(res);
+        //console.log(res);
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
@@ -27,6 +35,8 @@ const getOffersAndDisplay = async () => {
 }
 
 getOffersAndDisplay();
+setNombre(getNombre());
+
 
 
 
