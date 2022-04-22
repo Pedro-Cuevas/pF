@@ -7,3 +7,6 @@ INSERT INTO APPLICATIONS VALUES ('2', '1', '6');
 INSERT INTO APPLICATIONS VALUES ('3', '1', '10');
 INSERT INTO APPLICATIONS VALUES ('4', '3', '5');
 INSERT INTO APPLICATIONS VALUES ('5', '3', '4');
+
+INSERT INTO USER VALUES ('1', 'Pedro', 'Cuevas', 'Teleco', 'pedro@telefonica.com', '12345');
+INSERT INTO USER VALUES ('2', 'Isabela', 'Goetsch', 'Business', 'isabela@gmail.com', '67891');

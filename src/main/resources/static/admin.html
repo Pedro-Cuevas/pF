@@ -48,7 +48,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
                     <li><a class="nav-link scrollto" href="index.html#about">Ofertas</a></li>
-                    <li><a class="getstarted scrollto" href="register.html">Registrarse</a></li>
+                    <li><a class="getstarted scrollto" href="./admin.html">Admin</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -67,23 +67,32 @@
                     <form>
                         <div class="row gy-4">
                             <div class="col-md-12">
-                                <input type="text" name="name" class="form-control" placeholder="Nombre" required="">
+                                <input type="text" name="name" class="form-control" id="inputName" placeholder="Nombre" required="">
                             </div>
                             <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="3" placeholder="Descripción" required=""></textarea>
+                                <textarea class="form-control" name="message" id="inputDescription" rows="3" placeholder="Descripción" required=""></textarea>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group"> <!-- Date input -->
                                     <label class="control-label" for="date">Fecha de inicio</label>
-                                    <input class="form-control" id="dateBegin" name="date" placeholder="DD/MM/YYY" type="text"/>
+                                    <input class="form-control" id="inputDateBegining" name="date" placeholder="DD/MM/YYY" type="text"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group"> <!-- Date input -->
                                     <label class="control-label" for="date">Fecha de finalización</label>
-                                    <input class="form-control" id="dateFinal" name="date" placeholder="DD/MM/YYY" type="text"/>
+                                    <input class="form-control" id="inputDateEnd" name="date" placeholder="DD/MM/YYY" type="text"/>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="available" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Disponible
+                                    </label>
+                                </div>
+                            </div>
+                            
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-primary mt-1" id="btnOferta">
                                     Subir oferta
@@ -92,21 +101,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-8">
-                    <ul class="list-group">
-                        <li class="list-group-item">Primera empresa - Inicio de descripción...
-                            <div class="btn-group" role="group" aria-label="Basic example" style="float:right">
-                                <button type="button" class="btn btn-secondary">Editar</button>
-                                <button type="button" class="btn btn-secondary">Eliminar</button>
-                            </div>
-                        </li>
-                        <li class="list-group-item">Segunda empresa - Inicio de descripción...
-                            <div class="btn-group" role="group" aria-label="Basic example" style="float:right">
-                                <button type="button" class="btn btn-secondary">Editar</button>
-                                <button type="button" class="btn btn-secondary">Eliminar</button>
-                            </div>
-                        </li>
-                      </ul>
+                <div class="col-lg-8" id="offerList">
                 </div>
             </div>
         </div>
@@ -177,6 +172,9 @@
 
 <!-- jQuery -->
 <script src="assets/js/jquery.js"></script>
+
+<!-- API offers implementation -->
+<script src="assets/js/admin.js"></script>
 
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
