@@ -1,6 +1,5 @@
 const getUsers = async () => {
     let userEmail = $('#email').val();
-    console.log(userEmail);
     if(userEmail == ""){
         let request = await fetch("/api/v1/users" , {
             method: 'GET',
@@ -21,6 +20,7 @@ const getUsers = async () => {
             localStorage.setItem("userSurname", res[0].userSurname);
             localStorage.setItem("userEmail", res[0].userEmail);
             localStorage.setItem("userStudies", res[0].userStudies);
+            localStorage.setItem("hayLogin", true);
 
             window.location ="./user.html";
             /*exists = false;

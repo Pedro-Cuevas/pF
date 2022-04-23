@@ -1,36 +1,13 @@
-/*const getNombre = () => {
+const getNombre = () => {
     return localStorage.getItem("userName");
 }
 
 const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
-*/
-
-//if(document.getElementById("nombreLogin").innerHTML == "login / registro"){
-//    Storage.clear();
-//}
-
-//localStorage.array.forEach(element => {
-//    localStorage.removeItem(element);
-//});
-/*
-const clearStorage = () => {
-    let keys = [];
-   
-    // get storage keys
-    $.each(localStorage, (key) => {
-      keys.push(key);
-    });
-   
-    // loop through keys
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i];
-           localStorage.removeItem(key);
-    }
-};
 
 localStorage.setItem("hayLogin", false);
+
 const setNombreUsuario = () => {
     if(localStorage.getItem("hayLogin") == true){
         setNombre(getNombre());
@@ -38,8 +15,19 @@ const setNombreUsuario = () => {
         setNombre("login/registro");
         console.log("hola");
     }
-}*/
+}
+//////////////////////////////////////////////////////////
+setNombreUsuario();
 
-//setNombreUsuario();
+//falta forma de que cada vez que pase por index.js no se ponga hayLogin = false, solo al iniciar la aplicación
 
-//setNombre("hola");
+const getOfertas = (boton) => {
+    if(localStorage.getItem("hayLogin") == true){
+        document.getElementById(boton).href = "./search.html";
+    } else {
+        alert("Es necesario registrarse antes de acceder al buscador")
+        document.getElementById(boton).href = "./login.html";
+    }
+}
+$('#buscadorOfertas').click(() => getOfertas("buscadorOfertas"));
+$('#navOfertas').click(() => getOfertas("navOfertas"));
