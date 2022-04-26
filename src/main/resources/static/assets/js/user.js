@@ -24,8 +24,27 @@ const setEstudios = (estudios) => {
     document.getElementById("studies").innerHTML = estudios;
 }
 
+//////////////////////////////////////////////////////////////////////////
+const getID = async (email) => {
+    let request = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+    let id;
+    if(request.ok) {
+        let res = await request.json();
+        res.forEach(obj => {
+            if(obj.userEmail == email){
+                id = obj.id;
+            }
+        });
+        //console.log(id);
+        return id;
+    }
+}
+
 //////////////////////////////////////////////////////////////////////
-const getOffersAndDisplay = async (id) => {
+const getOffersAndDisplay = async () => {
+    let id = await  getID(getEmail());
     let request = await fetch("/api/v1/offers/with-application/"+id, {
         method: 'GET',
     });
@@ -55,6 +74,6 @@ const getOffersAndDisplay = async (id) => {
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
-$("#btnTab2").click(() => getOffersAndDisplay(3))
+$("#btnTab2").click(() => getOffersAndDisplay())
 
 //falta poder meter el id de forma automática
