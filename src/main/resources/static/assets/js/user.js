@@ -26,7 +26,6 @@ const setEstudios = (estudios) => {
 
 //////////////////////////////////////////////////////////////////////
 const getOffersAndDisplay = async () => {
-    console.log("hola");
     let request = await fetch("/api/v1/offers", {
         method: 'GET',
     });
@@ -40,10 +39,10 @@ const getOffersAndDisplay = async () => {
             +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
             + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-secondary"'
             + ' id="' + obj.id
-            + 'edit_btn">No guardar</button></div> </li>';
+            + 'edit_btn">No guardar</button></div> </li> <br>';
         });
         text += '</ul>';
-        $('#tab2').html(text);
+        document.getElementById("tab2").innerHTML=text;
 
 
         res.forEach(obj => {
@@ -56,4 +55,4 @@ const getOffersAndDisplay = async () => {
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
-$('#btTab2').click(() => getOffersAndDisplay());
+$("#btnTab2").click(() => getOffersAndDisplay())

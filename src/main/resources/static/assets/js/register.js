@@ -29,7 +29,7 @@ const createUser = async () => {
         localStorage.setItem("userEmail", $('#email').val());
         localStorage.setItem("userStudies", $('#resume').val());
         localStorage.setItem("hayLogin", true);
-        //window.location ="./user.html";
+        window.location ="./user.html";
     }
 }
 
