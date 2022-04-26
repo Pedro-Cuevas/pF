@@ -24,9 +24,36 @@ const setEstudios = (estudios) => {
     document.getElementById("studies").innerHTML = estudios;
 }
 
+//////////////////////////////////////////////////////////////////////
+const getOffersAndDisplay = async () => {
+    console.log("hola");
+    let request = await fetch("/api/v1/offers", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.json();
+
+        let text = '<ul class="list-group">';
+        res.forEach(obj => {
+            text += '<li class="list-group-item">'
+            +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+            + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-secondary"'
+            + ' id="' + obj.id
+            + 'edit_btn">No guardar</button></div> </li>';
+        });
+        text += '</ul>';
+        $('#tab2').html(text);
+
+
+        res.forEach(obj => {
+            $('#' + obj.id + 'edit_btn').click(() => editOffer(obj.id));
+        });
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
-
-
-//falta poder obtener la variable de login.js
+$('#btTab2').click(() => getOffersAndDisplay());
