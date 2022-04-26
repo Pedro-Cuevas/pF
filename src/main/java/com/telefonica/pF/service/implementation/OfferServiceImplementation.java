@@ -23,8 +23,8 @@ public class OfferServiceImplementation implements OfferService{
     }
 
     @Override
-    public Iterable<Offer> getOffersWithApplication(){
-        return offerRepository.getOffersWithApplication();
+    public Iterable<Offer> getOffersWithApplication(String id){
+        return offerRepository.getOffersWithApplication(id);
     }
 
     @Override

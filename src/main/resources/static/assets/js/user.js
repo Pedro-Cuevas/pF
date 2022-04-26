@@ -25,8 +25,8 @@ const setEstudios = (estudios) => {
 }
 
 //////////////////////////////////////////////////////////////////////
-const getOffersAndDisplay = async () => {
-    let request = await fetch("/api/v1/offers", {
+const getOffersAndDisplay = async (id) => {
+    let request = await fetch("/api/v1/offers/with-application/"+id, {
         method: 'GET',
     });
 
@@ -55,4 +55,6 @@ const getOffersAndDisplay = async () => {
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
-$("#btnTab2").click(() => getOffersAndDisplay())
+$("#btnTab2").click(() => getOffersAndDisplay(3))
+
+//falta poder meter el id de forma automática

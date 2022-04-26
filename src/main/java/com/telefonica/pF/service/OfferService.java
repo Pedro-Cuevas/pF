@@ -4,7 +4,7 @@ import com.telefonica.pF.model.Offer;
 
 public interface OfferService {
     Iterable<Offer> getOffers(String offerAvailable);
-    Iterable<Offer> getOffersWithApplication();
+    Iterable<Offer> getOffersWithApplication(String id);
     Iterable<Offer> getAllOffers();
     Iterable<Offer> getEmptyOffers();
     Offer getOffer(String id);
