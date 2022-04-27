@@ -11,3 +11,7 @@ INSERT INTO APPLICATIONS VALUES ('6', '2', '3');
 INSERT INTO USER VALUES ('1', 'Pedro', 'Cuevas', 'Teleco', 'pedro@telefonica.com', '12345');
 INSERT INTO USER VALUES ('2', 'Isabela', 'Goetsch', 'Business', 'isabela@gmail.com', '67891');
 INSERT INTO USER VALUES ('3', 'Jaime', 'de Clemente', 'Teleco+Business', 'jaime@gmail.com', '98765');
+
+INSERT INTO SUGERENCIAS VALUES ('1', 'user1@mail.com', 'Ofreceis demasaidas pocas practicas');
+INSERT INTO SUGERENCIAS VALUES ('2', 'user2@mail.com', 'La web es dificil de usar si eres ciego');
+INSERT INTO SUGERENCIAS VALUES ('3', 'user3@mail.com', 'Dadle un aumento a los programadores de la web');
