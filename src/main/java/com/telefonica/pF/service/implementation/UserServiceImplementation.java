@@ -56,4 +56,15 @@ public class UserServiceImplementation implements UserService {
     public User insertUser(User user){
         return userRepository.save(user);
     }
+
+    @Override
+    public User getUserLoggedIn(){
+        int log = 1;
+        Iterable<User> users = userRepository.getUserLoggedIn(log);
+        User response = null;
+        for(User user : users){
+                response = user;
+        }
+        return response;            
+    }
 }
