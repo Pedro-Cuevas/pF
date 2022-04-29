@@ -17,5 +17,5 @@ INSERT INTO SUGERENCIAS VALUES ('2', 'user2@mail.com', 'La web es dificil de usa
 INSERT INTO SUGERENCIAS VALUES ('3', 'user3@mail.com', 'Dadle un aumento a los programadores de la web');
 
 INSERT INTO DETECTARLOGIN VALUES ('1', '1', '0'); 
-INSERT INTO DETECTARLOGIN VALUES ('2', '2', '1');
+INSERT INTO DETECTARLOGIN VALUES ('2', '2', '0');
 INSERT INTO DETECTARLOGIN VALUES ('3', '3', '0');

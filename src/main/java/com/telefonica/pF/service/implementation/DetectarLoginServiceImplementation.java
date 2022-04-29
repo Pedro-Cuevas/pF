@@ -26,5 +26,15 @@ public class DetectarLoginServiceImplementation implements DetectarLoginService{
         }
         return response; 
     }
+
+    @Override
+    public DetectarLogin updateLogin(String id, DetectarLogin detectarLogin){
+        if(detectarLoginRepository.existsById(id)){
+            return detectarLoginRepository.save(detectarLogin);
+        } else {
+            return null;
+        }
+        
+    }
     
 }

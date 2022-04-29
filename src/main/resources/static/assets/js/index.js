@@ -1,21 +1,6 @@
-//const getNombre = () => {
-//    return localStorage.getItem("userName");
-//}
-
 const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
-
-/*
-const setNombreUsuario = () => {
-    if(localStorage.getItem("hayLogin") == true){
-        setNombre(getNombre());
-    } else {
-        setNombre("login/registro");
-        console.log("hola");
-    }
-}
-*/
 
 //////////////////////////////////////////////////////////////////////////////////////
 const getLogin = async () => {
@@ -25,9 +10,8 @@ const getLogin = async () => {
 
     localStorage.setItem("hayLogin", false);
     if(request.ok) {
-        //console.log(request);
         let obj = await request.json();
-        //console.log(obj);
+        //esto da error cuando no hay ningún usuario logged in
         if(obj != null){
             localStorage.setItem("hayLogin", true);
             let request2 = await fetch("/api/v1/users/"+obj.userId, {
@@ -35,7 +19,7 @@ const getLogin = async () => {
             });
             if(request2.ok){
                 let user = await request2.json();
-                localStorage.setItem("userLoggedIn", user);
+                //localStorage.setItem("userLoggedIn", user);
                 setNombre(user.userName);
             }
         }
@@ -46,17 +30,24 @@ const getLogin = async () => {
 
 const getOfertas = (boton) => {
     let login = localStorage.getItem("hayLogin");
-    console.log(login);
-    if(login == true){
-        //document.getElementById(boton).href = "./search.html";
-        console.log(login);
+    if(login == "true"){
+        document.getElementById(boton).href = "./search.html";
     } else {
-        console.log("hola");
-        //alert("Es necesario registrarse antes de acceder al buscador")
-        //document.getElementById(boton).href = "./login.html";
+        alert("Es necesario registrarse antes de acceder al buscador")
+        document.getElementById(boton).href = "./login.html";
+    }
+}
+//////////////////////////////////////////////////////////
+const direccionLink = () => {
+    let login = localStorage.getItem("hayLogin");
+    if(login == "true"){
+        document.getElementById("nombreLogin").href = "./user.html";
+    } else {
+        document.getElementById("nombreLogin").href = "./login.html";
     }
 }
 
 getLogin();
 $('#buscadorOfertas').click(() => getOfertas("buscadorOfertas"));
 $('#navOfertas').click(() => getOfertas("navOfertas"));
+$('#nombreLogin').click(() => direccionLink());

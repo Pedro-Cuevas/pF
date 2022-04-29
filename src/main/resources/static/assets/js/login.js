@@ -22,6 +22,28 @@ const getUsers = async () => {
             localStorage.setItem("userStudies", res[0].userStudies);
             localStorage.setItem("hayLogin", true);
 
+            let txt_body = '{ "id": "'
+                + res[0].id
+                + '", "userId": "'
+                + res[0].id
+                + '", "isLogged": "'
+                + 1
+                + '"}';
+
+            let request2 = await fetch("/api/v1/login/" + res[0].id, {
+                body: txt_body,
+                method: 'PUT',
+                //body: txt_body,
+                headers: {
+                    "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+                },
+                dataType: "json",
+            });
+
+            if(request2.ok) {
+                console.log("oferta actualizada");
+            }
+
             window.location ="./user.html";
             /*exists = false;
             let id = $('#email').val();
@@ -50,4 +72,3 @@ if(document.getElementById("btnLogin") != null){
         event.preventDefault()
     });
 }
-
