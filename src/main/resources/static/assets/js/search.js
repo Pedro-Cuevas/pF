@@ -1,5 +1,5 @@
 const getNombre = () => {
-    return localStorage.getItem("userName");
+    return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
 
 const setNombre = (nombre) => {

@@ -19,7 +19,7 @@ const getLogin = async () => {
             });
             if(request2.ok){
                 let user = await request2.json();
-                //localStorage.setItem("userLoggedIn", user);
+                localStorage.setItem("userLoggedIn", JSON.stringify(user));
                 setNombre(user.userName);
             }
         }

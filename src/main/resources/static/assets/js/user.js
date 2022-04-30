@@ -1,14 +1,14 @@
 const getNombre = () => {
-    return localStorage.getItem("userName");
+    return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
 const getApellido = () => {
-    return localStorage.getItem("userSurname");
+    return JSON.parse(localStorage.getItem("userLoggedIn")).userSurname;
 }
 const getEmail = () => {
-    return localStorage.getItem("userEmail");
+    return JSON.parse(localStorage.getItem("userLoggedIn")).userEmail;
 }
 const getEstudios = () => {
-    return localStorage.getItem("userStudies");
+    return JSON.parse(localStorage.getItem("userLoggedIn")).userStudies;
 }
 
 
@@ -75,5 +75,3 @@ setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
 $("#btnTab2").click(() => getOffersAndDisplay())
-
-//falta poder meter el id de forma automática

@@ -16,10 +16,7 @@ const getUsers = async () => {
     
         if(request.ok) {
             let res = await request.json();
-            localStorage.setItem("userName", res[0].userName);
-            localStorage.setItem("userSurname", res[0].userSurname);
-            localStorage.setItem("userEmail", res[0].userEmail);
-            localStorage.setItem("userStudies", res[0].userStudies);
+            localStorage.setItem("userLoggedIn", JSON.stringify(res[0]));
             localStorage.setItem("hayLogin", true);
 
             let txt_body = '{ "id": "'

@@ -36,5 +36,10 @@ public class DetectarLoginServiceImplementation implements DetectarLoginService{
         }
         
     }
+
+    @Override
+    public DetectarLogin insertLogin(DetectarLogin detectarLogin){
+        return detectarLoginRepository.save(detectarLogin);
+    }
     
 }
