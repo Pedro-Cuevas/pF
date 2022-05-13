@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // gets the list of news and displays it
 const getNewsAndDisplay = async () => {
-    let url = "https://newsapi.org/v2/everything?q=Telefonica&language=es&apiKey=e1c20127402a4673849c60cd7be88f99"
+    let url = 'https://newsapi.org/v2/everything?q=Telefónica-telefónica&sortBy=relevancy&language=es&apiKey=e1c20127402a4673849c60cd7be88f99'
 
     let request = await fetch(url, {
         method: 'GET',
