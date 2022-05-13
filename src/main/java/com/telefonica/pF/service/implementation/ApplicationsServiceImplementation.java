@@ -10,18 +10,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApplicationsServiceImplementation implements ApplicationsService{
     @Autowired
-    private ApplicationRepository ApplicationRepository;
+    private ApplicationRepository applicationRepository;
 
     @Override
     public Iterable<Application> getApplications(){
-        return ApplicationRepository.findAll();
+        return applicationRepository.findAll();
     }
 
     @Override
     public Application getApplication(String id){
         Application response = null;
-        if(ApplicationRepository.existsById(id)){
-            Iterable<Application> Applications = ApplicationRepository.getApplicationByID(id);
+        if(applicationRepository.existsById(id)){
+            Iterable<Application> Applications = applicationRepository.getApplicationByID(id);
             for(Application Application : Applications){
                 response = Application;
             }
@@ -31,19 +31,36 @@ public class ApplicationsServiceImplementation implements ApplicationsService{
     }
 
     @Override
+    public Iterable<Application> getApplicationByUserId(String userId){
+        Iterable<Application> response = applicationRepository.getApplicationByUserId(userId);
+        return response;
+    }
+
+    @Override
+    public Application getApplicationByOfferUser(String offerId, String userId){
+        Application response = null;
+        Iterable<Application> applications = applicationRepository.getApplicationByOfferUser(offerId, userId);
+        for(Application Application : applications){
+            response = Application;
+        }
+        return response;
+    }
+
+
+    @Override
     public void deleteApplication(String id){
-        ApplicationRepository.deleteById(id);
+        applicationRepository.deleteById(id);
     }
 
     @Override
     public Application insertApplication(Application Application){
-        return ApplicationRepository.save(Application);
+        return applicationRepository.save(Application);
     }
 
     @Override
     public Application updateApplication(String id, Application Application){
-        if(ApplicationRepository.existsById(id)){
-            return ApplicationRepository.save(Application);
+        if(applicationRepository.existsById(id)){
+            return applicationRepository.save(Application);
         } else {
             return null;
         }

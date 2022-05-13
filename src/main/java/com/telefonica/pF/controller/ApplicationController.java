@@ -35,6 +35,18 @@ public class ApplicationController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("/applications/user/{userId}")
+    public ResponseEntity<Iterable<Application>> getApplicationByUserId(@PathVariable String userId){
+        Iterable<Application> response = applicationsService.getApplicationByUserId(userId);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/applications/offerUser/{offerId}/{userId}")
+    public ResponseEntity<Application> getApplicationByUserId(@PathVariable String offerId, @PathVariable String userId){
+        Application response = applicationsService.getApplicationByOfferUser(offerId, userId);
+        return ResponseEntity.ok().body(response);
+    }
+
     //DELETE
     @DeleteMapping("/applications/{id}")
     public ResponseEntity<Application> deleteApplication(@PathVariable String id) {

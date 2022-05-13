@@ -41,7 +41,7 @@ const getOffersAndDisplay = async () => {
 const createApplication = async (offer_id) => {
     user_id = getId();
 
-    let request = await fetch("/api/v1/applications", {
+    let request = await fetch("/api/v1/applications/offerUser/"+ offer_id + "/" + user_id, {
         method: 'GET',
     });
 
@@ -51,16 +51,25 @@ const createApplication = async (offer_id) => {
         + user_id
         + '"}';
 
+    console.log(request);    
     if(request.ok) {
         let res = await request.json();
+        console.log(res);
+        if(res == null){
+            console.log("no está creada la oferta");
+        }
+        else {
+            console.log("Esta oferta ya la tiene guardada");
+        }
+        /*
         res.forEach(obj => {
-            if(obj.offerId === offer_id && obj.userId === user_id){
-                alert("Esta oferta ya la tiene guardada");
+            if(obj.offerId === offer_id){
+                console.log("Esta oferta ya la tiene guardada");
             } else {
                 console.log("nueva oferta");
                 //createNewApplication(txt_body);
             }
-        });
+        });*/
 
     }
 }
