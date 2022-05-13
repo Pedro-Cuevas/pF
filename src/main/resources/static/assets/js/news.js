@@ -23,3 +23,44 @@ const getNewsAndDisplay = async () => {
 }
 
 getNewsAndDisplay();
+
+//////////////////////////////////////////////////////////////////////////////////////
+const setNombre = (nombre) => {
+    document.getElementById("nombreLogin").innerHTML = nombre;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+const getLogin = async () => {
+    let request = await fetch("/api/v1/login/logged", {
+        method: 'GET',
+    });
+
+    localStorage.setItem("hayLogin", false);
+    if(request.ok) {
+        let obj = await request.json();
+        //esto da error cuando no hay ningún usuario logged in
+        if(obj != null){
+            localStorage.setItem("hayLogin", true);
+            let request2 = await fetch("/api/v1/users/"+obj.userId, {
+                method: 'GET',
+            });
+            if(request2.ok){
+                let user = await request2.json();
+                localStorage.setItem("userLoggedIn", JSON.stringify(user));
+                setNombre(user.userName);
+            }
+        }
+    }
+}
+//////////////////////////////////////////////////////////
+const direccionLink = () => {
+    let login = localStorage.getItem("hayLogin");
+    if(login == "true"){
+        document.getElementById("nombreLogin").href = "./user.html";
+    } else {
+        document.getElementById("nombreLogin").href = "./login.html";
+    }
+}
+
+getLogin();
+$('#nombreLogin').click(() => direccionLink());
