@@ -2,6 +2,10 @@ const getNombre = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
 
+const getId = () => {
+    return JSON.parse(localStorage.getItem("userLoggedIn")).id;
+}
+
 const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
@@ -29,10 +33,56 @@ const getOffersAndDisplay = async () => {
         $('#offerList').html(text);
 
         res.forEach(obj => {
-            $('#' + obj.id + 'select').click(() => console.log("click"));
+            $('#' + obj.id + 'select').click(() => createApplication(obj.id));
         });
     }
 }
+
+const createApplication = async (offer_id) => {
+    user_id = getId();
+
+    let request = await fetch("/api/v1/applications", {
+        method: 'GET',
+    });
+
+    let txt_body = '{ "offerId": "'
+        + offer_id
+        + '", "userId": "'
+        + user_id
+        + '"}';
+
+    if(request.ok) {
+        let res = await request.json();
+        res.forEach(obj => {
+            if(obj.offerId === offer_id && obj.userId === user_id){
+                alert("Esta oferta ya la tiene guardada");
+            } else {
+                console.log("nueva oferta");
+                //createNewApplication(txt_body);
+            }
+        });
+
+    }
+}
+
+const createNewApplication = async (txt_body) => {
+    let request = await fetch("/api/v1/applications", {
+        method: 'POST',
+        body: txt_body,
+        headers: {
+            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+        },
+        dataType: "json",
+    });
+
+    if(request.ok) {
+        let res = await request.json();
+        console.log(res);
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 getOffersAndDisplay();
 setNombre(getNombre());

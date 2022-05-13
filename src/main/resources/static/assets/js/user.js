@@ -10,7 +10,7 @@ const getEmail = () => {
 const getEstudios = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userStudies;
 }
-
+//////////////////////////////////////////////////////////////////////////
 
 const setNombre = (nombre, apellido) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
@@ -58,15 +58,41 @@ const getOffersAndDisplay = async () => {
             +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
             + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-secondary"'
             + ' id="' + obj.id
-            + 'edit_btn">No guardar</button></div> </li> <br>';
+            + 'noSave_btn">No guardar</button></div> </li> <br>';
         });
         text += '</ul>';
         document.getElementById("tab2").innerHTML=text;
 
 
         res.forEach(obj => {
-            $('#' + obj.id + 'edit_btn').click(() => editOffer(obj.id));
+            $('#' + obj.id + 'noSave_btn').click(() => editApplication(id, obj.id));
         });
+    }
+}
+
+const editApplication = async (user_id, offer_id) => {
+    let request = await fetch("/api/v1/applications", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.json();
+        res.forEach(obj => {
+            if(obj.offerId == offer_id && obj.userId == user_id){
+                deleteApplication(obj.id);
+            }
+        });
+
+    }
+}
+
+const deleteApplication = async (id) => {
+    let request = await fetch("/api/v1/applications/"+id, {
+        method: 'DELETE',
+    });
+
+    if(request.ok){
+        getOffersAndDisplay();
     }
 }
 
