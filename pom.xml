@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.telefonica</groupId>
-	<artifactId>p7</artifactId>
+	<artifactId>pF</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>p7</name>
 	<description>practica 7</description>
