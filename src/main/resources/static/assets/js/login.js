@@ -16,46 +16,46 @@ const getUsers = async () => {
     
         if(request.ok) {
             let res = await request.json();
-            localStorage.setItem("userLoggedIn", JSON.stringify(res[0]));
-            localStorage.setItem("hayLogin", true);
-
-            let txt_body = '{ "id": "'
-                + res[0].id
-                + '", "userId": "'
-                + res[0].id
-                + '", "isLogged": "'
-                + 1
-                + '"}';
-
-            let request2 = await fetch("/api/v1/login/" + res[0].id, {
-                body: txt_body,
-                method: 'PUT',
-                //body: txt_body,
-                headers: {
-                    "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
-                },
-                dataType: "json",
-            });
-
-            if(request2.ok) {
-                console.log("oferta actualizada");
-            }
-
-            window.location ="./user.html";
-            /*exists = false;
-            let id = $('#email').val();
-            res.forEach(obj => {
-                if(id == obj.id){
-                    exists = true;
-                };
-            });
-            
-            if(exists == false){
-                alert("Este usuario no está registrado");
-            } else {
-                alert("Este usuario está registrado");
-            }*/
+            console.log(res[0].userPassword);
+            if (document.getElementById("password") == ""){
+                alert("Contraseña requerida");
+                document.getElementById("password").focus();
+            } 
     
+            //else if (password != res[0].userPassword) {
+            //    alert("La contraseña no es correcta.");
+            //    document.getElementById("password").focus();
+            //}
+
+            else {
+                localStorage.setItem("userLoggedIn", JSON.stringify(res[0]));
+                localStorage.setItem("hayLogin", true);
+
+                let txt_body = '{ "id": "'
+                    + res[0].id
+                    + '", "userId": "'
+                    + res[0].id
+                    + '", "isLogged": "'
+                    + 1
+                    + '"}';
+
+                let request2 = await fetch("/api/v1/login/" + res[0].id, {
+                    body: txt_body,
+                    method: 'PUT',
+                    //body: txt_body,
+                    headers: {
+                        "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+                    },
+                    dataType: "json",
+                });
+
+                if(request2.ok) {
+                    console.log("oferta actualizada");
+                }
+
+                window.location ="./user.html";
+            }
+                
         }
     }
 
@@ -69,3 +69,6 @@ if(document.getElementById("btnLogin") != null){
         event.preventDefault()
     });
 }
+
+//////////////////////////////////////////////////////////////
+
