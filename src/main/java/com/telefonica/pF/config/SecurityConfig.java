@@ -42,11 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        //http es un objeto
+        //http es un objeto 
         http
             .authorizeRequests()
                 //.antMatchers("/api/v1/sugerencias", "/api/v1/sugerencias/**").permitAll()
-                .antMatchers("/login.html", "/index.html").permitAll()
+                .antMatchers( "./login.html").permitAll()
                 .anyRequest().authenticated() //otra cosa que no sea lo de arriba necesita autenticación
             .and()
             .logout(logout -> logout //para cerrar sesión, tiene que ser con un método POST
@@ -59,6 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .cors().and().csrf().disable();
     }
+
+    
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
