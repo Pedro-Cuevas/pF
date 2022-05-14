@@ -1,12 +1,15 @@
 package com.telefonica.pF.service;
 
-import com.telefonica.pF.model.User;
+import com.telefonica.pF.model.UserModel;
 
-public interface UserService {
-    Iterable<User> getUsers(String userEmail);
-    User getUser(String id);
-    User updateUser(String id, User user);
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface UserService extends UserDetailsService {
+    Iterable<UserModel> getUsers(String userEmail);
+    UserModel getUser(String id);
+    UserModel updateUser(String id, UserModel user);
     void deleteUser(String id);
-    User insertUser(User user);
-    User getUserLoggedIn();
+    UserModel insertUser(UserModel user);
+    UserModel getUserLoggedIn();
+    UserModel create(UserModel user);
 }
