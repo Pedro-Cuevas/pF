@@ -1,11 +1,14 @@
 package com.telefonica.pF.controller;
 
 
-import com.telefonica.pF.model.User;
+import com.telefonica.pF.model.UserModel;
 import com.telefonica.pF.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,41 +25,50 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping("/users")
-    public ResponseEntity<Iterable<User>> getUsers(@RequestParam(required=false) String userEmail){
+    public ResponseEntity<Iterable<UserModel>> getUsers(@RequestParam(required=false) String userEmail, @AuthenticationPrincipal User user){
         // /api/v1/users/?userEmail=Nombre1
-        Iterable<User> respuesta = userService.getUsers(userEmail);
+        System.out.println(user.getUsername());
+        Iterable<UserModel> respuesta = userService.getUsers(userEmail);
         return ResponseEntity.ok().body(respuesta);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUser(@PathVariable String id){
-        User respuesta = userService.getUser(id);
+    public ResponseEntity<UserModel> getUser(@PathVariable String id){
+        UserModel respuesta = userService.getUser(id);
         return ResponseEntity.ok().body(respuesta);
     }
 
     @GetMapping("/users/login")
-    public ResponseEntity<User> getUserLoggedIn(){
-        User respuesta = userService.getUserLoggedIn();
+    public ResponseEntity<UserModel> getUserLoggedIn(){
+        UserModel respuesta = userService.getUserLoggedIn();
         return ResponseEntity.ok().body(respuesta);
     }
 
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
-        User newUser = userService.updateUser(id, user);
+    public ResponseEntity<UserModel> updateUser(@PathVariable String id, @RequestBody UserModel user){
+        UserModel newUser = userService.updateUser(id, user);
         return ResponseEntity.ok().body(newUser);
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable String id){
+    public ResponseEntity<UserModel> deleteUser(@PathVariable String id){
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newOffer = userService.insertUser(user);
-        return ResponseEntity.ok().body(newOffer);
+    public ResponseEntity<UserModel> createUser(@RequestBody UserModel user) {
+
+        String hashedPassword = passwordEncoder.encode(user.getUserPassword());
+        user.setUserPassword(hashedPassword); //para guardar la contraseña con hash
+
+        UserModel newUser = userService.create(user);
+        return ResponseEntity.ok().body(newUser);
+
     }
 }
