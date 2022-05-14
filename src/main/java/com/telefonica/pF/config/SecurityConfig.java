@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //http es un objeto
         http
             .authorizeRequests()
-                .antMatchers("/api/v1/sugerencias", "/api/v1/sugerencias/**").permitAll()
+                //.antMatchers("/api/v1/sugerencias", "/api/v1/sugerencias/**").permitAll()
                 .antMatchers("/login.html", "/index.html").permitAll()
                 .anyRequest().authenticated() //otra cosa que no sea lo de arriba necesita autenticación
             .and()
