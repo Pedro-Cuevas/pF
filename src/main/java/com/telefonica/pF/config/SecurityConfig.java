@@ -46,14 +46,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/api/v1/sugerencias", "/api/v1/sugerencias/**").permitAll()
+                .antMatchers("/login.html", "/index.html").permitAll()
                 .anyRequest().authenticated() //otra cosa que no sea lo de arriba necesita autenticación
             .and()
             .logout(logout -> logout //para cerrar sesión, tiene que ser con un método POST
                 .logoutUrl("/api/v1/logout")
                 .logoutSuccessUrl("/api/v1/users") //me redirige aquí cuando ha hecho logout
                 .invalidateHttpSession(true) //invalida sesión http
-                .deleteCookies("JSESSIONID") //elimina esa cookie, 
-                                                                    //para cerrar sesión y que no se guarden datos
+                .deleteCookies("JSESSIONID") //elimina esa cookie, para cerrar sesión y que no se guarden datos
             )
             .httpBasic()
             .and()
@@ -63,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         //Estoy diciendo dónde están los usuarios y sus contraseñas
-        
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 }

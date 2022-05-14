@@ -1,3 +1,6 @@
+const getId = () => {
+    return JSON.parse(localStorage.getItem("userLoggedIn")).id;
+}
 const getNombre = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
@@ -97,7 +100,33 @@ const deleteApplication = async (id) => {
 }
 
 //////////////////////////////////////////////////////////////////////
+const noLogin = async (id) => {
+    let txt_body = '{ "id": "'
+        + id
+        + '", "userId": "'
+        + id
+        + '", "isLogged": "'
+        + 0
+        + '"}';
+
+    let request = await fetch("/api/v1/login/" + id, {
+        body: txt_body,
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+        },
+        dataType: "json",
+    });
+
+    localStorage.setItem("hayLogin", false);
+    if(request.ok) {
+        console.log("sesión cerrada");
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
 $("#btnTab2").click(() => getOffersAndDisplay())
+$("#cerrarSesion").click(() => noLogin(getId()));
