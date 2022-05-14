@@ -59,11 +59,54 @@
 <main id="main">
     <section id="panelAdmin" class="portfolio-details" style="padding-top: 120px;">
         <div class="container aos-init aos-animate" data-aos="fade-up">
-            <header class="section-header">
-                <h2>Así es como generamos un impacto</h2>
-                <p>Telefónica en los medios</p>
+            <header class="section-header" style="padding-top: 10px;">
+                <p>Telefónica en bolsa</p>
             </header>
-            <div id="newsList"></div>
+            <div class="d-flex justify-content-center flex-nowrap">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div id="tradingview_3c05b"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/NYSE-TEF/" rel="noopener" target="_blank"><span class="blue-text">TEF Cotizaciones</span></a> por TradingView</div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.MediumWidget(
+                    {
+                    "symbols": [
+                    [
+                        "Telefonica",
+                        "NYSE:TEF|12M"
+                    ]
+                    ],
+                    "chartOnly": false,
+                    "width": 1000,
+                    "height": 500,
+                    "locale": "es",
+                    "colorTheme": "light",
+                    "gridLineColor": "rgba(240, 243, 250, 0)",
+                    "fontColor": "#787B86",
+                    "isTransparent": false,
+                    "autosize": false,
+                    "showVolume": false,
+                    "hideDateRanges": false,
+                    "scalePosition": "no",
+                    "scaleMode": "Normal",
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                    "noTimeScale": false,
+                    "valuesTracking": "1",
+                    "chartType": "line",
+                    "container_id": "tradingview_3c05b"
+                    }
+                    );
+                    </script>  
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+            <header class="section-header" style="padding-top: 50px;">
+                <p>Junta general de accionistas de 2022</p>
+            </header>
+            <div class="d-flex justify-content-center flex-nowrap">
+                <iframe width="800" height="500" src="https://www.youtube.com/embed/TC8BM_CQMmg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 </main>
