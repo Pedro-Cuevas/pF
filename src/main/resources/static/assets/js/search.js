@@ -12,7 +12,7 @@ const setNombre = (nombre) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // gets the new list of offers and displays it
-const getOffersAndDisplay = async () => {
+const getOffersAndDisplay = async (user_id) => {
     let request = await fetch("/api/v1/offers", {
         method: 'GET',
     });
@@ -27,7 +27,7 @@ const getOffersAndDisplay = async () => {
             +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
             + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
             + ' id="' + obj.id
-            + 'select">Seleccionar</button></div> </li>';
+            + 'select">Seleccionar</button></div></li> <br>';
         });
         text += '</ul> </center>';
         $('#offerList').html(text);
@@ -51,25 +51,14 @@ const createApplication = async (offer_id) => {
         + user_id
         + '"}';
 
-    console.log(request);    
     if(request.ok) {
-        let res = await request.json();
-        console.log(res);
-        if(res == null){
-            console.log("no está creada la oferta");
+        let texto = await request.text();
+        if(texto == ""){
+            alert("Se ha añadido esta oferta a sus selecciones");
+            createNewApplication(txt_body);
+        } else {
+            alert("Esta oferta ya la tiene guardada");
         }
-        else {
-            console.log("Esta oferta ya la tiene guardada");
-        }
-        /*
-        res.forEach(obj => {
-            if(obj.offerId === offer_id){
-                console.log("Esta oferta ya la tiene guardada");
-            } else {
-                console.log("nueva oferta");
-                //createNewApplication(txt_body);
-            }
-        });*/
 
     }
 }

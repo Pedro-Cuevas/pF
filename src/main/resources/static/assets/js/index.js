@@ -10,9 +10,12 @@ const getLogin = async () => {
 
     localStorage.setItem("hayLogin", false);
     if(request.ok) {
-        let obj = await request.json();
-        //esto da error cuando no hay ningún usuario logged in
-        if(obj != null){
+        texto = await request.text();
+        if(texto == ""){
+            console.log("no hay login");
+        } else {
+            console.log("hay login");
+            let obj = JSON.parse(texto);
             localStorage.setItem("hayLogin", true);
             let request2 = await fetch("/api/v1/users/"+obj.userId, {
                 method: 'GET',
@@ -51,3 +54,27 @@ getLogin();
 $('#buscadorOfertas').click(() => getOfertas("buscadorOfertas"));
 $('#navOfertas').click(() => getOfertas("navOfertas"));
 $('#nombreLogin').click(() => direccionLink());
+
+//////////////////////////////////////////////////////////////////////////////
+/*
+function testSecureEndpoint() {
+    console.log("Connecting with a secure endpoint");
+    var headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + localStorage.getItem("access_token")
+            };
+    fetch("/secure", {
+            method: 'GET',
+            headers: headers
+        })
+        .then(data => {
+            if(data.status == 401) {
+                alert("No tienes suficientes permisos");
+            }
+            console.log(data)
+
+            console.log("End Connecting with a secure endpoint");
+        });
+}
+testSecureEndpoint(); */

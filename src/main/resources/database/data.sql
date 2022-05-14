@@ -8,9 +8,9 @@ INSERT INTO APPLICATIONS VALUES ('4', '3', '2');
 INSERT INTO APPLICATIONS VALUES ('5', '3', '1');
 INSERT INTO APPLICATIONS VALUES ('6', '2', '3');
 
-INSERT INTO USER VALUES ('1', 'Pedro', 'Cuevas', 'Teleco', 'pedro@telefonica.com', '{noop}12345');
-INSERT INTO USER VALUES ('2', 'Isabela', 'Goetsch', 'Business', 'isabela@gmail.com', '{bcrypt}67891');
-INSERT INTO USER VALUES ('3', 'Jaime', 'de Clemente', 'Teleco+Business', 'jaime@gmail.com', '{noop}98765');
+INSERT INTO USER VALUES ('1', 'Pedro', 'Cuevas', 'Teleco', 'pedro@telefonica.com', '{noop}12345', 'ROLE_ADMIN');
+INSERT INTO USER VALUES ('2', 'Isabela', 'Goetsch', 'Business', 'isabela@gmail.com', '{bcrypt}67891', 'ROLE_USER');
+INSERT INTO USER VALUES ('3', 'Jaime', 'de Clemente', 'Teleco+Business', 'jaime@gmail.com', '{noop}98765', 'ROLE_USER');
 
 INSERT INTO SUGERENCIAS VALUES ('1', 'user1@mail.com', 'Ofreceis demasaidas pocas practicas');
 INSERT INTO SUGERENCIAS VALUES ('2', 'user2@mail.com', 'La web es dificil de usar si eres ciego');

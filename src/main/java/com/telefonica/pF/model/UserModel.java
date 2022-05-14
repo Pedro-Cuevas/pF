@@ -18,6 +18,31 @@ public class UserModel {
     private String userStudies;
     private String userEmail;
     private String userPassword;
+    private String role;
+
+    public UserModel(String id, String userName, String userSurname, String userStudies, String userEmail, String userPassword, String role) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.userSurname = userSurname;
+        this.userStudies = userStudies;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.setRole(role);
+
+	}
+
+	public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public UserModel() {
+		super();
+	}
 
     public String getId() {
         return id;

@@ -12,4 +12,8 @@ public interface UserService extends UserDetailsService {
     UserModel insertUser(UserModel user);
     UserModel getUserLoggedIn();
     UserModel create(UserModel user);
+
+
+    LoginServiceResult authenticate(String user, String password);
+    APP_ROLES getRole(String accessToken);
 }
