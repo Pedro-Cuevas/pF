@@ -56,25 +56,3 @@ $('#navOfertas').click(() => getOfertas("navOfertas"));
 $('#nombreLogin').click(() => direccionLink());
 
 //////////////////////////////////////////////////////////////////////////////
-/*
-function testSecureEndpoint() {
-    console.log("Connecting with a secure endpoint");
-    var headers = {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': "Bearer " + localStorage.getItem("access_token")
-            };
-    fetch("/secure", {
-            method: 'GET',
-            headers: headers
-        })
-        .then(data => {
-            if(data.status == 401) {
-                alert("No tienes suficientes permisos");
-            }
-            console.log(data)
-
-            console.log("End Connecting with a secure endpoint");
-        });
-}
-testSecureEndpoint(); */
