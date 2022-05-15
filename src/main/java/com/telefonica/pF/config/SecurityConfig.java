@@ -21,19 +21,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
+    // MD5
+    // SHA256, SHA512
     @Bean
-    //Este método crea hash codes
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         PasswordEncoder defaultEncoder = NoOpPasswordEncoder.getInstance();
         
-        //noop -> no operation, no tiene hash
         Map<String, PasswordEncoder> encoders = new HashMap<>();
         encoders.put("noop", NoOpPasswordEncoder.getInstance());
         encoders.put("bcrypt", new BCryptPasswordEncoder());
 
-        //Por defecto bcrypt, si no hay nada se guarda en texto plano (noop)
         DelegatingPasswordEncoder passwordEncoder = new DelegatingPasswordEncoder("bcrypt", encoders);
         passwordEncoder.setDefaultPasswordEncoderForMatches(defaultEncoder);
 
@@ -42,29 +41,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        //http es un objeto 
         http
             .authorizeRequests()
-                //.antMatchers("/api/v1/sugerencias", "/api/v1/sugerencias/**").permitAll()
-                .antMatchers( "./login.html").permitAll()
-                .anyRequest().authenticated() //otra cosa que no sea lo de arriba necesita autenticación
+                .antMatchers("/api/v1/documents", "/api/v1/documents/**").permitAll()
+                .anyRequest().authenticated()
             .and()
-            .logout(logout -> logout //para cerrar sesión, tiene que ser con un método POST
+            .logout(logout -> logout
                 .logoutUrl("/api/v1/logout")
-                .logoutSuccessUrl("/api/v1/users") //me redirige aquí cuando ha hecho logout
-                .invalidateHttpSession(true) //invalida sesión http
-                .deleteCookies("JSESSIONID") //elimina esa cookie, para cerrar sesión y que no se guarden datos
+                .logoutSuccessUrl("/api/v1/users")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
             )
             .httpBasic()
             .and()
             .cors().and().csrf().disable();
     }
 
-    
-
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        //Estoy diciendo dónde están los usuarios y sus contraseñas
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 }
