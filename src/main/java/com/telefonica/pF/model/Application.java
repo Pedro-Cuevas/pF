@@ -23,6 +23,14 @@ public class Application {
     public Application() {}
 
 
+    public Application(String id, String offerId, String userId) {
+        this.id = id;
+        this.offerId = offerId;
+        this.userId = userId;
+    }
+
+
+
     public String getId() {
         return this.id;
     }

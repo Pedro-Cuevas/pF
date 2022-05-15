@@ -24,8 +24,18 @@ public class Offer {
 
 
 
-    public Offer() {
+    public Offer() {}
+
+
+    public Offer(String id, String offerName, LocalDate dateBegining, LocalDate dateEnd, String offerDescription, String offerAvailable) {
+        this.id = id;
+        this.offerName = offerName;
+        this.dateBegining = dateBegining;
+        this.dateEnd = dateEnd;
+        this.offerDescription = offerDescription;
+        this.offerAvailable = offerAvailable;
     }
+
 
 
     public String getId() {
