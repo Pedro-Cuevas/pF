@@ -83,10 +83,6 @@ public class UserE2ETest {
 
         UserModel newUser = new UserModel("Victoria" , "Piti", "universidad de la vida", "patinpiti@gmail.com", "coletas", "ROLE_USER");
 
-        System.out.println("#######################################################################################################################################");
-        System.out.println(newUser.getUserName());
-        System.out.println(newUser.getUserPassword());
-
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/users";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
