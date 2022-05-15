@@ -1,5 +1,7 @@
 package com.telefonica.pF.model;
 
+import java.util.Objects;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -23,6 +25,18 @@ public class UserModel {
     public UserModel(String id, String userName, String userSurname, String userStudies, String userEmail, String userPassword, String role) {
 		super();
 		this.id = id;
+		this.userName = userName;
+		this.userSurname = userSurname;
+        this.userStudies = userStudies;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.setRole(role);
+
+	}
+
+    public UserModel(String userName, String userSurname, String userStudies, String userEmail, String userPassword, String role) {
+		super();
+
 		this.userName = userName;
 		this.userSurname = userSurname;
         this.userStudies = userStudies;
@@ -91,4 +105,24 @@ public class UserModel {
     public void setUserStudies(String userStudies) {
         this.userStudies = userStudies;
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof UserModel)) {
+            return false;
+        }
+        UserModel userModel = (UserModel) o;
+        return Objects.equals(id, userModel.id) && Objects.equals(userName, userModel.userName) && Objects.equals(userSurname, userModel.userSurname) && Objects.equals(userStudies, userModel.userStudies) && Objects.equals(userEmail, userModel.userEmail) && Objects.equals(userPassword, userModel.userPassword) && Objects.equals(role, userModel.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, userSurname, userStudies, userEmail, userPassword, role);
+    }
+    
+
 }

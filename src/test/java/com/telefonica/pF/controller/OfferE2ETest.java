@@ -54,6 +54,7 @@ public class OfferE2ETest {
     }
 
     //TESTING PUT
+    //Como tambien estamos probando DELETE, hay que tener cuidado cuando se itera con Id
     @Test
     public void offerPutTest(){
         Offer newOffer = new Offer();
@@ -83,6 +84,7 @@ public class OfferE2ETest {
 
 
     //TESTING POST
+    //Como tambien estamos probando DELETE, hay que tener cuidado cuando se itera con Id
     @Test
     public void offerPostTest() {
 
@@ -106,16 +108,14 @@ public class OfferE2ETest {
             new ParameterizedTypeReference<Offer>(){}
         );
         
-        Iterable<Offer> appList = repository.findAll();
-        Iterator<Offer> iterator = appList.iterator();
+        Iterable<Offer> offerList = repository.findAll();
+        Iterator<Offer> iterator = offerList.iterator();
         Offer last = null;
 
-        int i = 1;
         while(iterator.hasNext()){
             last = (Offer) iterator.next();
-            i++;
         }
-        newOffer.setId(Integer.toString(i));
+        newOffer.setId(last.getId());
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(last);
@@ -127,7 +127,7 @@ public class OfferE2ETest {
     public void offerDeleteTest() {
         Iterable<Offer> offers1 = repository.findAll();
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/offers/1";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/offers/2";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
         HttpEntity<String> entity = new HttpEntity<>(headers);
