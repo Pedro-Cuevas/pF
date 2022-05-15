@@ -67,29 +67,29 @@
             <form class="needs-validation" novalidate>
                 <div class="row g-4">  
                     <div class="col-lg-3">
-                        <label for="keyword" class="form-label">Palabra clave <span class="text-muted"></span></label>
-                        <input type="text" class="form-control" id="keyword">
+                        <label for="keyword" class="form-label">Nombre <span class="text-muted"></span></label>
+                        <input type="text" class="form-control" id="name">
                     </div>
                     <div class="col-lg-3">
-                        <label for="destiny" class="form-label">Ciudad destino <span class="text-muted"></span></label>
-                        <input type="text" class="form-control" id="destiny">
+                        <label for="destiny" class="form-label">Fecha inicio después de: <span class="text-muted"></span></label>
+                        <input type="date" class="form-control" id="begining">
                     </div>
                     <div class="col-lg-3">
-                        <label for="typeJob" class="form-label">Tipo de trabajo <span class="text-muted"></span></label>
-                        <input type="text" class="form-control" id="typeJob">
+                        <label for="typeJob" class="form-label">Fecha fin antes de:<span class="text-muted"></span></label>
+                        <input type="date" class="form-control" id="end">
                     </div>
                     <div class="col-lg-3">
                         <label for="blank" class="form-label"> <span class="text-muted"></span></label>
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">BUSCAR</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" id="buscar">BUSCAR</button>
                     </div>
                 </div>
             </form>
         </div>
         
     </section>
-    <center>
-        <div class="col-lg-8" id="offerList"></div>
-    </center>
+    <div class="row justify-content-md-center">
+        <div class="col-lg-11" id="offerList"></div>
+    </div>
     
 </main>
 
