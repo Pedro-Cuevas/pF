@@ -3,8 +3,8 @@ Práctica Final PAT
 
 ## ToDo
 
--  Con sugerencias: que al admin pueda ver las sugerencias e introducir un link al site en el frontEnd
--  Login: falta cerrar sesión
+- Implementar seguridad
+- (No es importante) En los tests E2E, hacer uso de los constructores en vez de getters y setters
 
 ## Issues
 
