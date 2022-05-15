@@ -31,7 +31,7 @@ public class Offer {
         this.id = id;
         this.offerName = offerName;
         this.dateBegining = dateBegining;
-        this.dateEnd = dateEnd;
+        this.setDateEnd(dateEnd);
         this.offerDescription = offerDescription;
         this.offerAvailable = offerAvailable;
     }
@@ -67,7 +67,11 @@ public class Offer {
     }
 
     public void setDateEnd(LocalDate dateEnd) {
-        this.dateEnd = dateEnd;
+        if(dateBegining.isBefore(dateEnd)){
+            this.dateEnd = dateEnd;
+        }else{
+            this.dateEnd = null;
+        }
     }
 
     public String getOfferDescription() {

@@ -25,10 +25,10 @@ public class UserModel {
     public UserModel(String id, String userName, String userSurname, String userStudies, String userEmail, String userPassword, String role) {
 		super();
 		this.id = id;
-		this.userName = userName;
-		this.userSurname = userSurname;
+		this.setUserName(userName);
+        this.setUserSurname(userSurname);
         this.userStudies = userStudies;
-		this.userEmail = userEmail;
+		this.setUserEmail(userEmail);
 		this.userPassword = userPassword;
 		this.setRole(role);
 
@@ -36,11 +36,10 @@ public class UserModel {
 
     public UserModel(String userName, String userSurname, String userStudies, String userEmail, String userPassword, String role) {
 		super();
-
-		this.userName = userName;
-		this.userSurname = userSurname;
+		this.setUserName(userName);
+        this.setUserSurname(userSurname);
         this.userStudies = userStudies;
-		this.userEmail = userEmail;
+		this.setUserEmail(userEmail);
 		this.userPassword = userPassword;
 		this.setRole(role);
 
@@ -67,15 +66,19 @@ public class UserModel {
     }
 
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        if(userEmail.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
+            this.userEmail= userEmail;
+        } else {
+            this.userEmail = null;
+        }
     }
 
     public String getUserPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setUserPassword(String password) {
+        this.userPassword = password;
     }
 
     public void setId(String id) {
@@ -86,16 +89,24 @@ public class UserModel {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String name) {
+        if(name.matches("[a-zA-Z]+")){
+            this.userName = name;
+        } else {
+            this.userName = null;
+        }     
     }
 
     public String getUserSurname() {
         return userSurname;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setUserSurname(String surname) {
+        if(surname.matches("[a-zA-Z]+")){
+            this.userSurname = surname;
+        } else {
+            this.userSurname = null;
+        }   
     }
 
     public String getUserStudies() {
