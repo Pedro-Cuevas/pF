@@ -23,6 +23,14 @@ public class Sugerencia {
     }
 
 
+    public Sugerencia(String id, String sugerenciaMail, String sugerenciaText) {
+        this.id = id;
+        this.sugerenciaMail = sugerenciaMail;
+        this.sugerenciaText = sugerenciaText;
+    }
+
+
+
     public String getId() {
         return this.id;
     }
