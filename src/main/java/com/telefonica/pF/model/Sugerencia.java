@@ -1,5 +1,7 @@
 package com.telefonica.pF.model;
 
+import java.util.Objects;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -15,6 +17,11 @@ public class Sugerencia {
 
     private String sugerenciaMail;
     private String sugerenciaText;
+
+
+    public Sugerencia() {
+    }
+
 
     public String getId() {
         return this.id;
@@ -39,4 +46,22 @@ public class Sugerencia {
     public void setSugerenciaText(String sugerenciaText) {
         this.sugerenciaText = sugerenciaText;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Sugerencia)) {
+            return false;
+        }
+        Sugerencia sugerencia = (Sugerencia) o;
+        return Objects.equals(id, sugerencia.id) && Objects.equals(sugerenciaMail, sugerencia.sugerenciaMail) && Objects.equals(sugerenciaText, sugerencia.sugerenciaText);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, sugerenciaMail, sugerenciaText);
+    }
+
 }

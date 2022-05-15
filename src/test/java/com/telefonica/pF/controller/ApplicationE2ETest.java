@@ -103,12 +103,10 @@ public class ApplicationE2ETest {
         Iterator<Application> iterator = appList.iterator();
         Application last = null;
 
-        int i = 1;
         while(iterator.hasNext()){
             last = (Application) iterator.next();
-            i++;
         }
-        newAppPost.setId(Integer.toString(i));
+        newAppPost.setId(last.getId());
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(last);
@@ -120,7 +118,7 @@ public class ApplicationE2ETest {
     public void applicationDeleteTest() {
         Iterable<Application> applications_1 = repository.findAll();
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/applications/1";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/applications/3";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
         HttpEntity<String> entity = new HttpEntity<>(headers);
