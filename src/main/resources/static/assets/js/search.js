@@ -89,54 +89,25 @@ const filtrarBusqueda = async () => {
     if (nombre != "" && fin != "" && inicio != ""){
         filterByAll(nombre, inicio, fin);
     }else if (fin != "" && inicio != ""){
-        filterByDates(inicio, fin);
+        filterByTwo(2, inicio, fin);
     } else if (nombre != "" && inicio != ""){
-        filterByNameDate(nombre, 0, inicio);
+        filterByTwo(0, nombre, inicio);
     } else if (nombre != "" && fin != ""){
-        filterByNameDate(nombre, 1, fin);
+        filterByTwo(1, nombre, fin);
     } else if(nombre == "" && inicio == "" && fin ==""){
         getOffersAndDisplay();
     } else if (nombre != "") {
-        filterByName(nombre);
+        filterByOne(2, nombre);
     } else if (inicio != "") {
-        filterByDate(0, inicio);
+        filterByOne(0, inicio);
     } else if (fin != "") {
-        filterByDate(1, fin);
+        filterByOne(1, fin);
     }
     
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-const filterByName = async (name) => {
-    let request = await fetch("/api/v1/offers", {
-        method: 'GET',
-    });
-
-    if(request.ok) {
-        let res = await request.json();
-        //console.log(res);
-
-        let text = '<center> <ul class="list-group">';
-        res.forEach(obj => {
-            if(name == obj.offerName){
-                text += '<li class="list-group-item">'
-                +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
-                + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
-                + ' id="' + obj.id
-                + 'select">Seleccionar</button></div></li> <br>';
-            }
-            
-        });
-        text += '</ul> </center>';
-        $('#offerList').html(text);
-
-        res.forEach(obj => {
-            $('#' + obj.id + 'select').click(() => createApplication(obj.id));
-        });
-    }
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-const filterByDate = async (beg, date) => {
+const filterByOne = async (beg, filter) => {
     let request = await fetch("/api/v1/offers", {
         method: 'GET',
     });
@@ -148,15 +119,23 @@ const filterByDate = async (beg, date) => {
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
             if(beg == 0){ //date begining
-                if(obj.dateBegining > date){
+                if(obj.dateBegining > filter){
                     text += '<li class="list-group-item">'
                     +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
                     + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
                     + ' id="' + obj.id
                     + 'select">Seleccionar</button></div></li> <br>';
                 }
-            } else { //date end
-                if(obj.dateEnd < date){
+            } else if(beg == 1){ //date end
+                if(obj.dateEnd < filter){
+                    text += '<li class="list-group-item">'
+                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
+                    + ' id="' + obj.id
+                    + 'select">Seleccionar</button></div></li> <br>';
+                }
+            } else if(beg == 2){ //name
+                if(filter == obj.offerName){
                     text += '<li class="list-group-item">'
                     +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
                     + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
@@ -175,7 +154,10 @@ const filterByDate = async (beg, date) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-const filterByDates = async (beg, end) => {
+const filterByTwo = async (val, filter1, filter2) => {
+    //val == 0, filter1 = name, filter2 = beg
+    //val == 1, filter1 = name, filter2 = end
+    //val == 2, filter1 = beg, filter2 = end
     let request = await fetch("/api/v1/offers", {
         method: 'GET',
     });
@@ -186,52 +168,31 @@ const filterByDates = async (beg, end) => {
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
-            if(obj.dateBegining > beg && obj.dateEnd < end){
-                text += '<li class="list-group-item">'
-                +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
-                + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
-                + ' id="' + obj.id
-                + 'select">Seleccionar</button></div></li> <br>';
+            if(val == 0){
+                if(obj.dateBegining > filter2 && filter1 == obj.offerName){
+                    text += '<li class="list-group-item">'
+                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
+                    + ' id="' + obj.id
+                    + 'select">Seleccionar</button></div></li> <br>';
+                }
+            } else if (val == 1){
+                if(obj.dateBegining > filter2 && filter1 == obj.offerName){
+                    text += '<li class="list-group-item">'
+                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
+                    + ' id="' + obj.id
+                    + 'select">Seleccionar</button></div></li> <br>';
+                }
+            } else if (val == 2){
+                if(obj.dateEnd < filter2 && obj.dateEnd < filter2){
+                    text += '<li class="list-group-item">'
+                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
+                    + ' id="' + obj.id
+                    + 'select">Seleccionar</button></div></li> <br>';
+                }
             }
-        });
-        text += '</ul> </center>';
-        $('#offerList').html(text);
-
-        res.forEach(obj => {
-            $('#' + obj.id + 'select').click(() => createApplication(obj.id));
-        });
-    }
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-const filterByNameDate = async (name, beg, date) => {
-    let request = await fetch("/api/v1/offers", {
-        method: 'GET',
-    });
-
-    if(request.ok) {
-        let res = await request.json();
-        //console.log(res);
-
-        let text = '<center> <ul class="list-group">';
-        res.forEach(obj => {
-            if(beg == 0){ //date begining
-                if(obj.dateBegining > date && name == obj.offerName){
-                    text += '<li class="list-group-item">'
-                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
-                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
-                    + ' id="' + obj.id
-                    + 'select">Seleccionar</button></div></li> <br>';
-                }
-            } else { //date end
-                if(obj.dateEnd < date && name == obj.offerName){
-                    text += '<li class="list-group-item">'
-                    +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
-                    + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-primary"'
-                    + ' id="' + obj.id
-                    + 'select">Seleccionar</button></div></li> <br>';
-                }
-            }            
         });
         text += '</ul> </center>';
         $('#offerList').html(text);
