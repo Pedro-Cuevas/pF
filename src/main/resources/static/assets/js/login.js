@@ -50,7 +50,7 @@ const getUsers = async () => {
                 });
 
                 if(request2.ok) {
-                    console.log("oferta actualizada");
+                    console.log("Bienvenido");
                 }
 
                 window.location ="./user.html";
