@@ -72,3 +72,15 @@ if(document.getElementById("btnLogin") != null){
 
 //////////////////////////////////////////////////////////////
 
+const getOfertas = (boton) => {
+    let login = localStorage.getItem("hayLogin");
+    if(login == "true"){
+        document.getElementById(boton).href = "./search.html";
+    } else {
+        alert("Es necesario registrarse antes de acceder al buscador")
+        document.getElementById(boton).href = "./login.html";
+    }
+}
+
+
+$('#navOfertas').click(() => getOfertas("navOfertas"));
