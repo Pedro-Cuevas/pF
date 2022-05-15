@@ -87,7 +87,8 @@ public class UserServiceImplementation implements UserService {
     public UserDetails loadUserByUsername(String userName) {
         UserModel user = userRepository.findByUserName(userName);
         List<GrantedAuthority> authorities = new ArrayList<>();
-        //lista vacía de roles
+        //lista vacía de roles, administrador/usuario
+        //convierto el usuario que he buscado por userName a UserDetails
         UserDetails newUser = new User(user.getUserName(), user.getUserPassword(), authorities);
         return newUser;
     }

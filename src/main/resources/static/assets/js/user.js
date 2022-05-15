@@ -120,7 +120,13 @@ const noLogin = async (id) => {
 
     localStorage.setItem("hayLogin", false);
     if(request.ok) {
-        console.log("sesión cerrada");
+        let request2 = await fetch("/api/v1/logout",{
+            method : 'POST'
+        });
+        if(request2.ok){
+            console.log("sesión cerrada");
+        }
+        
     }
 }
 
@@ -130,3 +136,5 @@ setEmail(getEmail());
 setEstudios(getEstudios());
 $("#btnTab2").click(() => getOffersAndDisplay())
 $("#cerrarSesion").click(() => noLogin(getId()));
+
+
