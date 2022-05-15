@@ -90,7 +90,7 @@ public class UserModel {
     }
 
     public void setUserName(String name) {
-        if(name.matches("[a-zA-Z]+")){
+        if(name.matches("[a-zA-Z ]+")){
             this.userName = name;
         } else {
             this.userName = null;
@@ -102,7 +102,7 @@ public class UserModel {
     }
 
     public void setUserSurname(String surname) {
-        if(surname.matches("[a-zA-Z]+")){
+        if(surname.matches("[a-zA-Z ]+")){
             this.userSurname = surname;
         } else {
             this.userSurname = null;
