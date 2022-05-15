@@ -1,6 +1,7 @@
 package com.telefonica.pF.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -20,6 +21,12 @@ public class Offer {
     private LocalDate dateEnd;
     private String offerDescription;
     private String offerAvailable;
+
+
+
+    public Offer() {
+    }
+
 
     public String getId() {
         return this.id;
@@ -68,5 +75,23 @@ public class Offer {
     public void setOfferAvailable(String offerAvailable) {
         this.offerAvailable = offerAvailable;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Offer)) {
+            return false;
+        }
+        Offer offer = (Offer) o;
+        return Objects.equals(id, offer.id) && Objects.equals(offerName, offer.offerName) && Objects.equals(dateBegining, offer.dateBegining) && Objects.equals(dateEnd, offer.dateEnd) && Objects.equals(offerDescription, offer.offerDescription) && Objects.equals(offerAvailable, offer.offerAvailable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, offerName, dateBegining, dateEnd, offerDescription, offerAvailable);
+    }
+
 
 }
