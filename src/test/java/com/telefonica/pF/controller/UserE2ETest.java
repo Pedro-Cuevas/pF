@@ -56,7 +56,7 @@ public class UserE2ETest {
     //Como tambien estamos probando DELETE, hay que tener cuidado cuando se itera con Id
     @Test
     public void userPutTest(){
-        UserModel newUser = new UserModel("2", "Victoria Federica" , "de Marichalar y Borbon", "universidad de la vida", "patinpiti@gmail.com", "{noop}coletas", "ROLE_USER");
+        UserModel newUser = new UserModel("2", "Victoria" , "Federica", "universidad de la vida", "patinpiti@gmail.com", "coletas", "ROLE_USER");
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/users/2";
         HttpHeaders headers = new HttpHeaders();
@@ -81,7 +81,11 @@ public class UserE2ETest {
     @Test
     public void userPostTest() {
 
-        UserModel newUser = new UserModel("Victoria Patin Piti" , "de Marichalar y Borbon", "universidad de la vida", "patinpiti@gmail.com", "{noop}coletas", "ROLE_USER");
+        UserModel newUser = new UserModel("Victoria" , "Piti", "universidad de la vida", "patinpiti@gmail.com", "coletas", "ROLE_USER");
+
+        System.out.println("#######################################################################################################################################");
+        System.out.println(newUser.getUserName());
+        System.out.println(newUser.getUserPassword());
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/users";
         HttpHeaders headers = new HttpHeaders();
