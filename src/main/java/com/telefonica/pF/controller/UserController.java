@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,6 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<Iterable<UserModel>> getUsers(@RequestParam(required=false) String userEmail, @AuthenticationPrincipal User user){
         // /api/v1/users/?userEmail=Nombre1
-        System.out.println(user.getUsername());
         Iterable<UserModel> respuesta = userService.getUsers(userEmail);
         return ResponseEntity.ok().body(respuesta);
     }
