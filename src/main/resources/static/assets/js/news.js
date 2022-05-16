@@ -24,6 +24,8 @@ const getNewsAndDisplay = async () => {
 
 getNewsAndDisplay();
 
+
+/*
 //////////////////////////////////////////////////////////////////////////////////////
 const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
@@ -80,3 +82,5 @@ const getOfertas = (boton) => {
 getLogin();
 $('#nombreLogin').click(() => direccionLink());
 $('#navOfertas').click(() => getOfertas("navOfertas"));
+
+*/

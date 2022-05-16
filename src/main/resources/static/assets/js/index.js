@@ -1,3 +1,5 @@
+/*
+
 const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
@@ -56,3 +58,5 @@ $('#navOfertas').click(() => getOfertas("navOfertas"));
 $('#nombreLogin').click(() => direccionLink());
 
 //////////////////////////////////////////////////////////////////////////////
+
+*/
