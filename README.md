@@ -9,5 +9,5 @@ Práctica Final PAT
 
 ## Issues (comentar al profe)
 
-- Los vídeos de youtube aportan muchos errores a la consola
+- Los vídeos de youtube aportan muchos errores a la consola. Creo que es solo por el adblocker
 - El selector de documentos da errores en la consola
