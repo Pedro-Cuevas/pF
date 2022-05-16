@@ -1,16 +1,3 @@
-const a = async () => {
-    let request = await fetch("/api/v1/login", {
-        method: 'GET',
-    });
-
-    if(request.ok) {
-        let res = await request.text();
-        console.log(res);
-    }
-}
-
-a();
-
 const getNombre = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
@@ -19,10 +6,18 @@ const getId = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).id;
 }
 
-const setNombre = (nombre) => {
-    document.getElementById("nombreLogin").innerHTML = nombre;
+const setNombre = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        document.getElementById("nombreLogin").innerHTML = res;
+    }   
 }
 
+setNombre();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // gets the new list of offers and displays it
 const getOffersAndDisplay = async () => {

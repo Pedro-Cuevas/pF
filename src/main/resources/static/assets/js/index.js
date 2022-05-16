@@ -1,14 +1,23 @@
-const setNombre = () => {
-    if(localStorage.getItem("hayLogin") == true){
-        nombre = JSON.parse(localStorage.getItem("userLoggedIn")).userName;
-        document.getElementById("nombreLogin").innerHTML = nombre;
-    } else {
-        document.getElementById("nombreLogin").innerHTML = "Registro";
-    }    
+const setNombre = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        console.log(res);
+        if(res != "anonymousUser"){
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./user.html";
+        } else {
+            document.getElementById("nombreLogin").innerHTML = "Registro";
+            document.getElementById("nombreLogin").href = "./register.html";
+        }
+    }   
 }
 
 setNombre();
-
+/*
 //////////////////////////////////////////////////////////////////////////////////////
 const getLogin = async () => {
     let request = await fetch("/api/v1/login/logged", {
@@ -36,33 +45,7 @@ const getLogin = async () => {
     }
 }
 
-/*
-//////////////////////////////////////////////////////////
-
-const getOfertas = (boton) => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById(boton).href = "./search.html";
-    } else {
-        alert("Es necesario registrarse antes de acceder al buscador")
-        document.getElementById(boton).href = "./login.html";
-    }
-}
-//////////////////////////////////////////////////////////
-const direccionLink = () => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById("nombreLogin").href = "./user.html";
-    } else {
-        document.getElementById("nombreLogin").href = "./login.html";
-    }
-}
-
 getLogin();
-$('#buscadorOfertas').click(() => getOfertas("buscadorOfertas"));
-$('#navOfertas').click(() => getOfertas("navOfertas"));
-$('#nombreLogin').click(() => direccionLink());
 
-//////////////////////////////////////////////////////////////////////////////
 
 */

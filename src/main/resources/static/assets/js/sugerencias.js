@@ -30,26 +30,6 @@ const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
 
-//////////////////////////////////////////////////////////////////////////////
-const direccionLink = () => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById("nombreLogin").href = "./user.html";
-    } else {
-        document.getElementById("nombreLogin").href = "./login.html";
-    }
-}
-//////////////////////////////////////////////////////////
-
-const getOfertas = (boton) => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById(boton).href = "./search.html";
-    } else {
-        alert("Es necesario registrarse antes de acceder al buscador")
-        document.getElementById(boton).href = "./login.html";
-    }
-}
 /////////////////////////////////////////////////////////////////////
 
 const getNombreUsuario = async () => {

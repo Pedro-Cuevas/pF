@@ -25,9 +25,6 @@ const createUser = async () => {
 
     if(request.ok) {
         res = await request.json();
-        console.log("oferta creada");
-        localStorage.setItem("userLoggedIn", JSON.stringify(res));
-        localStorage.setItem("hayLogin", true);
         let login = '{ "userId": "'
             + res.id
             + '", "isLogged": "'
@@ -160,17 +157,3 @@ const validateForm = async () =>{
         await createUser();
     }
 }
-
-//////////////////////////////////////////////////////////
-
-const getOfertas = (boton) => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById(boton).href = "./search.html";
-    } else {
-        alert("Es necesario registrarse antes de acceder al buscador")
-        document.getElementById(boton).href = "./register.html";
-    }
-}
-
-//$('#navOfertas').click(() => getOfertas("navOfertas"));

@@ -27,28 +27,27 @@ getNewsAndDisplay();
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-const setNombre = () => {
-    if(localStorage.getItem("hayLogin") == true){
-        nombre = JSON.parse(localStorage.getItem("userLoggedIn")).userName;
-        document.getElementById("nombreLogin").innerHTML = nombre;
-    } else {
-        document.getElementById("nombreLogin").innerHTML = "Registro";
-    }    
-    
+const setNombre = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        console.log(res);
+        if(res != "anonymousUser"){
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./user.html";
+        } else {
+            document.getElementById("nombreLogin").innerHTML = "Registro";
+            document.getElementById("nombreLogin").href = "./register.html";
+        }
+    }   
 }
 
+setNombre();
 //////////////////////////////////////////////////////////
-const direccionLink = () => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById("nombreLogin").href = "./user.html";
-    } else {
-        document.getElementById("nombreLogin").href = "./login.html";
-    }
-}
-
-//////////////////////////////////////////////////////////
-
+/*
 const getOfertas = (boton) => {
     let login = localStorage.getItem("hayLogin");
     if(login == "true"){
@@ -59,8 +58,8 @@ const getOfertas = (boton) => {
     }
 }
 
-setNombre();
 
 $('#nombreLogin').click(() => direccionLink());
 $('#navOfertas').click(() => getOfertas("navOfertas"));
+*/
 
