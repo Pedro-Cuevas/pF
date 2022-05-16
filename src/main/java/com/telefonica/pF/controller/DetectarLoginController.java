@@ -1,10 +1,15 @@
 package com.telefonica.pF.controller;
 
 import com.telefonica.pF.model.DetectarLogin;
+import com.telefonica.pF.model.UserModel;
 import com.telefonica.pF.service.DetectarLoginService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class DetectarLoginController {
+
+    @GetMapping("/login")
+    public ResponseEntity<String> getLoggedUser(@AuthenticationPrincipal UserModel user){
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        String respuesta = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok().body(respuesta);
+    }
+
+    /*
     @Autowired
     private DetectarLoginService detectarLoginService;
     
@@ -48,5 +62,5 @@ public class DetectarLoginController {
     public ResponseEntity<DetectarLogin> createLogin(@RequestBody DetectarLogin detectarLogin) {
         DetectarLogin newLogin = detectarLoginService.insertLogin(detectarLogin);
         return ResponseEntity.ok().body(newLogin);
-    }
+    }*/
 }
