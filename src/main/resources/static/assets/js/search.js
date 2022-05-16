@@ -1,3 +1,17 @@
+const a = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    console.log("fetch hecho");
+    if(request.ok) {
+        let res = await request.text();
+        console.log(res);
+    }
+}
+
+a();
+
 const getNombre = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
 }
@@ -244,7 +258,3 @@ $('#buscar').click(() => filtrarBusqueda());
 document.getElementById("buscar").addEventListener("click", function(event){
     event.preventDefault()
 });
-
-
-
-
