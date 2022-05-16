@@ -1,9 +1,10 @@
 const setNombre = () => {
-    if(localStorage.getItem("hayLogin")){
+    if(localStorage.getItem("hayLogin") == true){
         nombre = JSON.parse(localStorage.getItem("userLoggedIn")).userName;
         document.getElementById("nombreLogin").innerHTML = nombre;
-    }
-    
+    } else {
+        document.getElementById("nombreLogin").innerHTML = "Registro";
+    }    
 }
 
 setNombre();
