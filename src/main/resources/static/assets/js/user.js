@@ -129,8 +129,62 @@ const noLogin = async (id) => {
         
     }
 }
+/////////////////////////////////////////////////////////////////////
+/*
+const getNombreUsuario = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        console.log(res);
+        //setUser(res);
+    }
+}
+
+const setUser = async (nombre) => {
+    let request = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        res.forEach(obj =>{
+            if(obj.userName == nombre){
+                let txt_body = '{ "id": "'
+                    + obj.id
+                    + '", "userId": "'
+                    + obj.id
+                    + '", "isLogged": "'
+                    + 1
+                    + '"}';
+                localStorage.setItem("userLoggedIn", JSON.stringify(obj));
+                localStorage.setItem("hayLogin", true);
+                setLogin(obj.id, txt_body);
+            }
+        });
+    }
+}
+
+const setLogin = async (id, txt_body) => {
+    let request2 = await fetch("/api/v1/login/" + id, {
+        body: txt_body,
+        method: 'PUT',
+        //body: txt_body,
+        headers: {
+            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+        },
+        dataType: "json",
+    });
+
+    if(request2.ok) {
+        console.log("Bienvenido");
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
+getNombreUsuario();*/
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());
