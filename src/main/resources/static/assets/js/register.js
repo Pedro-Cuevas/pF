@@ -10,6 +10,8 @@ const createUser = async () => {
         + $('#email').val()
         + '", "userPassword": "'
         + $('#password').val()
+        + '", "role": "'
+        + "ROLE_USER"
         + '"}';
 
     let request = await fetch("/api/v1/users", {
@@ -43,7 +45,7 @@ const createUser = async () => {
         });
 
         if(request2.ok) {
-            window.location ="./user.html";
+            window.location ="./index.html";
         }
         
         

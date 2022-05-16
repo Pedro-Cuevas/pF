@@ -1,8 +1,12 @@
-/*
-
-const setNombre = (nombre) => {
-    document.getElementById("nombreLogin").innerHTML = nombre;
+const setNombre = () => {
+    if(localStorage.getItem("hayLogin")){
+        nombre = JSON.parse(localStorage.getItem("userLoggedIn")).userName;
+        document.getElementById("nombreLogin").innerHTML = nombre;
+    }
+    
 }
+
+setNombre();
 
 //////////////////////////////////////////////////////////////////////////////////////
 const getLogin = async () => {
@@ -31,6 +35,7 @@ const getLogin = async () => {
     }
 }
 
+/*
 //////////////////////////////////////////////////////////
 
 const getOfertas = (boton) => {

@@ -30,31 +30,6 @@ const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
-const getLogin = async () => {
-    let request = await fetch("/api/v1/login/logged", {
-        method: 'GET',
-    });
-
-    if(request.ok) {
-        texto = await request.text();
-        if(texto == ""){
-            console.log("no hay login");
-        } else {
-            console.log("hay login");
-            let obj = JSON.parse(texto);
-            localStorage.setItem("hayLogin", true);
-            let request2 = await fetch("/api/v1/users/"+obj.userId, {
-                method: 'GET',
-            });
-            if(request2.ok){
-                let user = await request2.json();
-                localStorage.setItem("userLoggedIn", JSON.stringify(user));
-                setNombre(user.userName);
-            }
-        }
-    }
-}
 //////////////////////////////////////////////////////////////////////////////
 const direccionLink = () => {
     let login = localStorage.getItem("hayLogin");
@@ -75,7 +50,65 @@ const getOfertas = (boton) => {
         document.getElementById(boton).href = "./login.html";
     }
 }
+/////////////////////////////////////////////////////////////////////
 
-getLogin();
+const getNombreUsuario = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        console.log(res);
+        setUser(res);
+    }
+}
+
+const setUser = async (nombre) => {
+    let request = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.json();
+        
+        res.forEach(obj =>{
+            if(obj.userName == nombre){
+                let txt_body = '{ "id": "'
+                    + obj.id
+                    + '", "userId": "'
+                    + obj.id
+                    + '", "isLogged": "'
+                    + 1
+                    + '"}';
+                setNombre(nombre);
+                localStorage.setItem("userLoggedIn", JSON.stringify(obj));
+                localStorage.setItem("hayLogin", true);
+                setLogin(obj.id, txt_body);
+            }
+        });
+    }
+}
+
+const setLogin = async (id, txt_body) => {
+    console.log(id);
+    let request2 = await fetch("/api/v1/login/" + id, {
+        body: txt_body,
+        method: 'PUT',
+        //body: txt_body,
+        headers: {
+            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
+        },
+        dataType: "json",
+    });
+
+    if(request2.ok) {
+        console.log("Bienvenido");
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
+getNombreUsuario();
+
 $('#nombreLogin').click(() => direccionLink());
 $('#navOfertas').click(() => getOfertas("navOfertas"));

@@ -130,7 +130,7 @@ const noLogin = async (id) => {
     }
 }
 /////////////////////////////////////////////////////////////////////
-/*
+
 const getNombreUsuario = async () => {
     let request = await fetch("/api/v1/login", {
         method: 'GET',
@@ -139,7 +139,7 @@ const getNombreUsuario = async () => {
     if(request.ok) {
         let res = await request.text();
         console.log(res);
-        //setUser(res);
+        setUser(res);
     }
 }
 
@@ -149,7 +149,8 @@ const setUser = async (nombre) => {
     });
 
     if(request.ok) {
-        let res = await request.text();
+        let res = await request.json();
+        
         res.forEach(obj =>{
             if(obj.userName == nombre){
                 let txt_body = '{ "id": "'
@@ -168,6 +169,7 @@ const setUser = async (nombre) => {
 }
 
 const setLogin = async (id, txt_body) => {
+    console.log(id);
     let request2 = await fetch("/api/v1/login/" + id, {
         body: txt_body,
         method: 'PUT',
@@ -184,7 +186,7 @@ const setLogin = async (id, txt_body) => {
 }
 
 //////////////////////////////////////////////////////////////////////
-getNombreUsuario();*/
+getNombreUsuario();
 setNombre(getNombre(), getApellido());
 setEmail(getEmail());
 setEstudios(getEstudios());

@@ -25,38 +25,16 @@ const getNewsAndDisplay = async () => {
 getNewsAndDisplay();
 
 
-/*
-//////////////////////////////////////////////////////////////////////////////////////
-const setNombre = (nombre) => {
-    document.getElementById("nombreLogin").innerHTML = nombre;
-}
 
 //////////////////////////////////////////////////////////////////////////////////////
-const getLogin = async () => {
-    let request = await fetch("/api/v1/login/logged", {
-        method: 'GET',
-    });
-
-    localStorage.setItem("hayLogin", false);
-    if(request.ok) {
-        texto = await request.text();
-        if(texto == ""){
-            console.log("no hay login");
-        } else {
-            console.log("hay login");
-            let obj = JSON.parse(texto);
-            localStorage.setItem("hayLogin", true);
-            let request2 = await fetch("/api/v1/users/"+obj.userId, {
-                method: 'GET',
-            });
-            if(request2.ok){
-                let user = await request2.json();
-                localStorage.setItem("userLoggedIn", JSON.stringify(user));
-                setNombre(user.userName);
-            }
-        }
+const setNombre = () => {
+    if(localStorage.getItem("hayLogin")){
+        nombre = JSON.parse(localStorage.getItem("userLoggedIn")).userName;
+        document.getElementById("nombreLogin").innerHTML = nombre;
     }
+    
 }
+
 //////////////////////////////////////////////////////////
 const direccionLink = () => {
     let login = localStorage.getItem("hayLogin");
@@ -79,8 +57,8 @@ const getOfertas = (boton) => {
     }
 }
 
-getLogin();
+setNombre();
+
 $('#nombreLogin').click(() => direccionLink());
 $('#navOfertas').click(() => getOfertas("navOfertas"));
 
-*/
