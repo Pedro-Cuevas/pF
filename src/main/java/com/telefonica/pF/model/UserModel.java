@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @Builder
 @Table("USER")
-public class UserModel{
+public class UserModel {
     @Id
 	private String id;
 
@@ -138,16 +138,5 @@ public class UserModel{
     @Override
     public int hashCode() {
         return Objects.hash(id, userName, userSurname, userStudies, userEmail, userPassword, role);
-    }
-
-    public Collection<? extends GrantedAuthority> getAuthorities() {
- 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-    
-    
-        authorities.add(new SimpleGrantedAuthority(role));
-    
-    
-        return authorities;
     }
 }
