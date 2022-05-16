@@ -3,7 +3,6 @@ const a = async () => {
         method: 'GET',
     });
 
-    console.log("fetch hecho");
     if(request.ok) {
         let res = await request.text();
         console.log(res);
