@@ -171,4 +171,4 @@ const getOfertas = (boton) => {
     }
 }
 
-$('#navOfertas').click(() => getOfertas("navOfertas"));
+//$('#navOfertas').click(() => getOfertas("navOfertas"));
