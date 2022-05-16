@@ -1,9 +1,14 @@
 package com.telefonica.pF.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +16,7 @@ import lombok.Data;
 @Data
 @Builder
 @Table("USER")
-public class UserModel {
+public class UserModel{
     @Id
 	private String id;
 
@@ -134,6 +139,15 @@ public class UserModel {
     public int hashCode() {
         return Objects.hash(id, userName, userSurname, userStudies, userEmail, userPassword, role);
     }
-    
 
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+ 
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    
+    
+        authorities.add(new SimpleGrantedAuthority(role));
+    
+    
+        return authorities;
+    }
 }
