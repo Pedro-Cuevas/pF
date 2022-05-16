@@ -243,6 +243,20 @@ $('#btnOferta').click(() => createOfferAndDisplay());
 getOffersAndDisplay();
 
 
+///////////////////////////////////////////////////////////////////////////////
+//Checks if user is admin in order to display the content
 
+const begin = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
 
-// Si das a editar una oferta y, sin guardar editas otra, se actualizan las dos
+    if(request.ok) {
+        let user = await request.text();
+        
+        let requestUsers = await fetch("/api/v1/users", {
+            method: 'GET',
+        });
+
+        if requestUsers.
+}

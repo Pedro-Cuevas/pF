@@ -27,7 +27,6 @@ public class DetectarLoginController {
     public ResponseEntity<String> getLoggedUser(@AuthenticationPrincipal UserModel user){
        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
        String nombre = authentication.getName();
-        System.out.println(nombre);
        return ResponseEntity.ok().body(nombre);
     }
 
