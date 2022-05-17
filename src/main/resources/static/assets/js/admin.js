@@ -41,10 +41,10 @@ const deleteOfferAndUpdate = async (id) => {
 const createOfferAndDisplay = async () => {
 
     let dates = await getDates();
-    begin = dates.begining;
-    end = dates.end;
+    let begin = dates.begining;
+    let end = dates.end;
 
-    let txt_body = '{ "offerName": "'
+    let txt_body = '{"offerName": "'
         + $('#inputName').val()
         + '", "dateBegining": "'
         + begin
@@ -56,8 +56,9 @@ const createOfferAndDisplay = async () => {
         + $('#available').val()
         + '"}';
 
+    console.log(txt_body)
+
     let request = await fetch("/api/v1/offers", {
-        body: txt_body,
         method: 'POST',
         body: txt_body,
         headers: {
@@ -237,16 +238,12 @@ const updateOffers = async (id) => {
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////
-
-$('#btnOferta').click(() => createOfferAndDisplay());
-getOffersAndDisplay();
-
-
 ///////////////////////////////////////////////////////////////////////////////
-//Checks if user is admin in order to display the content
+//Checks if user is not admin in order to hide content or show page
 
 const begin = async () => {
+    let isAdmin = true;
+
     let request = await fetch("/api/v1/login", {
         method: 'GET',
     });
@@ -258,5 +255,24 @@ const begin = async () => {
             method: 'GET',
         });
 
-        if requestUsers.
+        if(requestUsers.ok) {
+            let userList = await requestUsers.json();
+
+            userList.forEach(obj => {
+                if((obj.userName ===  user)&&(obj.role != "ROLE_ADMIN")){
+                    isAdmin = false;
+                }
+            });
+        }
+    }
+    
+
+    if(isAdmin){
+        $('#btnOferta').click(() => createOfferAndDisplay());
+        getOffersAndDisplay();
+    } else {
+        window.location.href = '/index.html';
+    }
 }
+
+begin();

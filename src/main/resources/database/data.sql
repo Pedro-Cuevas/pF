@@ -19,3 +19,7 @@ INSERT INTO SUGERENCIAS VALUES ('3', 'user3@mail.com', 'Dadle un aumento a los p
 INSERT INTO DETECTARLOGIN VALUES ('1', '1', '0'); 
 INSERT INTO DETECTARLOGIN VALUES ('2', '2', '0');
 INSERT INTO DETECTARLOGIN VALUES ('3', '3', '0');
+
+INSERT INTO NEWSLETTER VALUES ('1', 'user1@mail.com', 'Pedro', 'M'); 
+INSERT INTO NEWSLETTER VALUES ('2', 'user1@mail.com', 'Carmela', 'F');
+INSERT INTO NEWSLETTER VALUES ('3', 'user1@mail.com', 'Luis', 'M');
