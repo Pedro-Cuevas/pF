@@ -240,7 +240,6 @@ const updateOffers = async (id) => {
 
 ///////////////////////////////////////////////////////////////////////////////
 //Checks if user is not admin in order to hide content or show page
-
 const begin = async () => {
     let isAdmin = true;
 
