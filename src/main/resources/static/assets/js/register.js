@@ -26,25 +26,6 @@ const createUser = async () => {
     if(request.ok) {
         res = await request.json();
         localStorage.setItem("userLoggedIn", JSON.stringify(res));
-        /*let login = '{ "userId": "'
-            + res.id
-            + '", "isLogged": "'
-            + 1
-            + '"}';
-        
-        
-        let request2 = await fetch("/api/v1/login", {
-            body: login,
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
-            },
-            dataType: "json",
-        });
-
-        if(request2.ok) {
-            
-        }*/
         window.location ="./index.html";
         
     }

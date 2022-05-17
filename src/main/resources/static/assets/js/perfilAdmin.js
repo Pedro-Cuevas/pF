@@ -62,7 +62,7 @@ const setUser = async (nombre) => {
                     + '", "isLogged": "'
                     + 1
                     + '"}';*/
-                setNombre(obj.userName, obj.userSurname, obj.userEmail);
+                setNombre(obj.userName, obj.userEmail);
                 localStorage.setItem("userLoggedIn", JSON.stringify(obj));
                 //localStorage.setItem("hayLogin", true);
                 //setLogin(obj.id, txt_body);
@@ -88,9 +88,9 @@ const setUser = async (nombre) => {
     }
 }*/
 //////////////////////////////////////////////////////////////////////
-const setNombre = (nombre, apellido, email) => {
+const setNombre = (nombre, email) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
-    document.getElementById("nombreUsuario").innerHTML = nombre +" "+ apellido;
+    document.getElementById("nombreUsuario").innerHTML = nombre;
     document.getElementById("email").innerHTML = email;
 }
 

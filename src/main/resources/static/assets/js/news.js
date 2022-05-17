@@ -50,20 +50,3 @@ const setNombre = async () => {
 
 setNombre();
 
-//////////////////////////////////////////////////////////
-/*
-const getOfertas = (boton) => {
-    let login = localStorage.getItem("hayLogin");
-    if(login == "true"){
-        document.getElementById(boton).href = "./search.html";
-    } else {
-        alert("Es necesario registrarse antes de acceder al buscador")
-        document.getElementById(boton).href = "./login.html";
-    }
-}
-
-
-$('#nombreLogin').click(() => direccionLink());
-$('#navOfertas').click(() => getOfertas("navOfertas"));
-*/
-

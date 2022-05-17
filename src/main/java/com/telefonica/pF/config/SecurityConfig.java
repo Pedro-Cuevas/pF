@@ -48,7 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                //.antMatchers("/api/v1/documents", "/api/v1/documents/**").permitAll()
                 .antMatchers("/", "/index.html", "/register.html", "/news.html", "/bolsa.html", "/logout.html", "/assets/js/**", "/assets/img/**", "/assets/css/**", "/assets/vendor/**", "/api/v1/**", "/assets/login/**", "/api/v1/users/**", "/newsletter.html").permitAll()
                 .anyRequest().authenticated()
             .and()

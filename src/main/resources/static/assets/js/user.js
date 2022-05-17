@@ -39,21 +39,23 @@ const getOffersAndDisplay = async () => {
     if(request.ok) {
         let res = await request.json();
 
-        let text = '<ul class="list-group">';
-        res.forEach(obj => {
-            text += '<li class="list-group-item">'
-            +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
-            + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-secondary"'
-            + ' id="' + obj.id
-            + 'noSave_btn">No guardar</button></div> </li> <br>';
-        });
-        text += '</ul>';
-        document.getElementById("tab2").innerHTML=text;
-
-
-        res.forEach(obj => {
-            $('#' + obj.id + 'noSave_btn').click(() => editApplication(id, obj.id));
-        });
+        if(res.length !== 0){
+            let text = '<ul class="list-group">';
+            res.forEach(obj => {
+                text += '<li class="list-group-item">'
+                +  obj.offerName + ', de ' + obj.dateBegining + ' a ' + obj.dateEnd
+                + '<div class="btn-group" role="group" aria-label="button group" style="float:right"> <button type="submit" class="btn btn-secondary"'
+                + ' id="' + obj.id
+                + 'noSave_btn">No guardar</button></div> </li> <br>';
+            });
+            text += '</ul>';
+            document.getElementById("tab2").innerHTML=text;
+            res.forEach(obj => {
+                $('#' + obj.id + 'noSave_btn').click(() => editApplication(id, obj.id));
+            });
+        } else {
+            document.getElementById("tab2").innerHTML = "<h4>¡Vaya! Aún no tienes ninguna oferta guardada...</h4><br>"
+        }
     }
 }
 

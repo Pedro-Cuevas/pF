@@ -63,8 +63,10 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<UserModel> createUser(@RequestBody UserModel user) {
 
+        /*
         String hashedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(hashedPassword); //para guardar la contraseña con hash
+        */
 
         UserModel newUser = userService.create(user);
         return ResponseEntity.ok().body(newUser);
