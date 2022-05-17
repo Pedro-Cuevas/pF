@@ -25,7 +25,8 @@ const createUser = async () => {
 
     if(request.ok) {
         res = await request.json();
-        let login = '{ "userId": "'
+        localStorage.setItem("userLoggedIn", JSON.stringify(res));
+        /*let login = '{ "userId": "'
             + res.id
             + '", "isLogged": "'
             + 1
@@ -42,9 +43,9 @@ const createUser = async () => {
         });
 
         if(request2.ok) {
-            window.location ="./index.html";
-        }
-        
+            
+        }*/
+        window.location ="./index.html";
         
     }
 }

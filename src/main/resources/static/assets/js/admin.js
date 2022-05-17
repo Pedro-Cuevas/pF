@@ -260,6 +260,8 @@ const begin = async () => {
             userList.forEach(obj => {
                 if((obj.userName ===  user)&&(obj.role != "ROLE_ADMIN")){
                     isAdmin = false;
+                } else if (obj.role == "ROLE_ADMIN") {
+                    document.getElementById("nombreLogin").innerHTML = obj.userName;
                 }
             });
         }

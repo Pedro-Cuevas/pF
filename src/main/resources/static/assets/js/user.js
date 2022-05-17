@@ -1,4 +1,4 @@
-const getId = () => {
+/*const getId = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).id;
 }
 const getNombre = () => {
@@ -12,20 +12,20 @@ const getEmail = () => {
 }
 const getEstudios = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).userStudies;
+}*/
+
+const getId = () => {
+    return JSON.parse(localStorage.getItem("userLoggedIn")).id;
 }
 //////////////////////////////////////////////////////////////////////////
 
-const setNombre = (nombre, apellido) => {
+const setNombre = (nombre, apellido, email, estudios) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
     document.getElementById("nombreUsuario").innerHTML = nombre +" "+ apellido;
-}
-
-const setEmail = (email) => {
     document.getElementById("email").innerHTML = email;
-}
-const setEstudios = (estudios) => {
     document.getElementById("studies").innerHTML = estudios;
 }
+
 
 //////////////////////////////////////////////////////////////////////////
 const getID = async (email) => {
@@ -47,7 +47,7 @@ const getID = async (email) => {
 
 //////////////////////////////////////////////////////////////////////
 const getOffersAndDisplay = async () => {
-    let id = await  getID(getEmail());
+    let id = await  getId();
     let request = await fetch("/api/v1/offers/with-application/"+id, {
         method: 'GET',
     });
@@ -101,7 +101,7 @@ const deleteApplication = async (id) => {
 
 //////////////////////////////////////////////////////////////////////
 const noLogin = async (id) => {
-    let txt_body = '{ "id": "'
+    /*let txt_body = '{ "id": "'
         + id
         + '", "userId": "'
         + id
@@ -118,8 +118,7 @@ const noLogin = async (id) => {
         dataType: "json",
     });
 
-    localStorage.setItem("hayLogin", false);
-    if(request.ok) {
+    if(request.ok) {*/
         let request2 = await fetch("/api/v1/logout",{
             method : 'POST'
         });
@@ -127,7 +126,7 @@ const noLogin = async (id) => {
             console.log("sesión cerrada");
         }
         
-    }
+    //}
 }
 /////////////////////////////////////////////////////////////////////
 
@@ -153,22 +152,23 @@ const setUser = async (nombre) => {
         
         res.forEach(obj =>{
             if(obj.userName == nombre){
-                let txt_body = '{ "id": "'
+                /*let txt_body = '{ "id": "'
                     + obj.id
                     + '", "userId": "'
                     + obj.id
                     + '", "isLogged": "'
                     + 1
-                    + '"}';
+                    + '"}';*/
+                setNombre(obj.userName, obj.userSurname, obj.userEmail, obj.userStudies);
                 localStorage.setItem("userLoggedIn", JSON.stringify(obj));
-                localStorage.setItem("hayLogin", true);
-                setLogin(obj.id, txt_body);
+                //localStorage.setItem("hayLogin", true);
+                //setLogin(obj.id, txt_body);
             }
         });
     }
 }
 
-const setLogin = async (id, txt_body) => {
+/*const setLogin = async (id, txt_body) => {
     console.log(id);
     let request2 = await fetch("/api/v1/login/" + id, {
         body: txt_body,
@@ -183,13 +183,44 @@ const setLogin = async (id, txt_body) => {
     if(request2.ok) {
         console.log("Bienvenido");
     }
+}*/
+
+//Checks if user is not admin in order to direct to page
+const begin = async () => {
+    let user = JSON.parse(localStorage.getItem("userLoggedIn"));
+    let isAdmin = true;
+    let requestUsers = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+
+    if(requestUsers.ok) {
+        let userList = await requestUsers.json();
+
+        userList.forEach(obj => {
+            if((obj.userName ===  user.userName)&&(obj.role != "ROLE_ADMIN")){
+                isAdmin = false;
+            } else if ((obj.userName ===  user.userName)&&(obj.role == "ROLE_ADMIN")) {
+                isAdmin = true;
+            }
+        });
+    }    
+
+    if(isAdmin){
+        window.location.href = '/perfilAdmin.html';
+    } else {
+        window.location.href = '/user.html';
+    }
 }
+
+begin();
+
+
 
 //////////////////////////////////////////////////////////////////////
 getNombreUsuario();
-setNombre(getNombre(), getApellido());
-setEmail(getEmail());
-setEstudios(getEstudios());
+//setNombre(getNombre(), getApellido());
+//setEmail(getEmail());
+//setEstudios(getEstudios());
 $("#btnTab2").click(() => getOffersAndDisplay())
 $("#cerrarSesion").click(() => noLogin(getId()));
 

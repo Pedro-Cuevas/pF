@@ -28,10 +28,10 @@ const getUsers = async () => {
             //}
 
             else {
-                localStorage.setItem("userLoggedIn", JSON.stringify(res[0]));
-                localStorage.setItem("hayLogin", true);
+                //localStorage.setItem("userLoggedIn", JSON.stringify(res[0]));
+                //localStorage.setItem("hayLogin", true);
 
-                let txt_body = '{ "id": "'
+                /*let txt_body = '{ "id": "'
                     + res[0].id
                     + '", "userId": "'
                     + res[0].id
@@ -51,7 +51,7 @@ const getUsers = async () => {
 
                 if(request2.ok) {
                     console.log("Bienvenido");
-                }
+                }*/
 
                 window.location ="./user.html";
             }
@@ -71,7 +71,7 @@ if(document.getElementById("btnLogin") != null){
 }
 
 //////////////////////////////////////////////////////////////
-
+/*
 const getOfertas = (boton) => {
     let login = localStorage.getItem("hayLogin");
     if(login == "true"){
@@ -80,7 +80,7 @@ const getOfertas = (boton) => {
         alert("Es necesario registrarse antes de acceder al buscador")
         document.getElementById(boton).href = "./login.html";
     }
-}
+}*/
 
 
 $('#navOfertas').click(() => getOfertas("navOfertas"));

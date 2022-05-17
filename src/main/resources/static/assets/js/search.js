@@ -1,9 +1,20 @@
-const getNombre = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
-}
-
 const getId = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).id;
+}
+
+const setId = async (nombre) => {
+    let request = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+
+    if(request.ok){
+        let res = await request.json();
+        res.forEach(obj => {
+            if(obj.userName == nombre){
+                localStorage.setItem("userLoggedIn", JSON.stringify(obj));
+            }
+        });
+    }
 }
 
 const setNombre = async () => {
@@ -13,7 +24,15 @@ const setNombre = async () => {
 
     if(request.ok) {
         let res = await request.text();
-        document.getElementById("nombreLogin").innerHTML = res;
+        setId(res);
+        if(res == "Admin"){
+            console.log("Admin");
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./perfilAdmin.html";
+        } else {
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./user.html";
+        }
     }   
 }
 
@@ -246,7 +265,6 @@ const filterByAll = async (name, beg, end) => {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 getOffersAndDisplay();
-setNombre(getNombre());
 $('#buscar').click(() => filtrarBusqueda());
 
 document.getElementById("buscar").addEventListener("click", function(event){

@@ -26,7 +26,7 @@ $('#btnClose1').click(() => $('#modal').modal('hide'));
 $('#btnClose2').click(() => $('#modal').modal('hide'));
 
 ///////////////////////////////////////////////////////////
-const setNombre = (nombre) => {
+/*const setNombre = (nombre) => {
     document.getElementById("nombreLogin").innerHTML = nombre;
 }
 
@@ -88,7 +88,43 @@ const setLogin = async (id, txt_body) => {
 }
 
 //////////////////////////////////////////////////////////////////////
-getNombreUsuario();
+getNombreUsuario();*/
 
-$('#nombreLogin').click(() => direccionLink());
-$('#navOfertas').click(() => getOfertas("navOfertas"));
+const setId = async (nombre) => {
+    let request = await fetch("/api/v1/users", {
+        method: 'GET',
+    });
+
+    if(request.ok){
+        let res = await request.json();
+        res.forEach(obj => {
+            if(obj.userName == nombre){
+                localStorage.setItem("userLoggedIn", JSON.stringify(obj));
+            }
+        });
+    }
+}
+
+const setNombre = async () => {
+    let request = await fetch("/api/v1/login", {
+        method: 'GET',
+    });
+
+    if(request.ok) {
+        let res = await request.text();
+        setId(res);
+        if(res == "Admin"){
+            console.log("Admin");
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./perfilAdmin.html";
+        } else {
+            document.getElementById("nombreLogin").innerHTML = res;
+            document.getElementById("nombreLogin").href = "./user.html";
+        }
+    }   
+}
+
+setNombre();
+
+//$('#nombreLogin').click(() => direccionLink());
+//$('#navOfertas').click(() => getOfertas("navOfertas"));
