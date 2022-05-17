@@ -10,21 +10,19 @@
         <script th:src="@{/assets/login/login.js}"></script>
     </head>
     <header>
-        <a href="index.html" class="imagen">
-            <img src="/assets/login/logo.png" alt="" width="160px" height="40px">
+        <a href="/index.html" class="imagen">
+            <img src="/assets/login/logo.png" alt="" width="160px" height="40px" class="center">
         </a>
     </header>
     <body>
         <form th:action="@{/auth/login}" method="post" class="container" style="font-family: Arial;">
             <div>
-                <label class="input" >User Name</label>
-                <br>
+                <label class="input" >Usuario</label>
                 <input type="text" size ="50" name="username" />
             </div>
             <br>
             <div>
-                <label class="input" >Password</label>
-                <br>
+                <label class="input" >Clave</label>
                 <input type="password" size="50" name="password" />
             </div>
             <br>

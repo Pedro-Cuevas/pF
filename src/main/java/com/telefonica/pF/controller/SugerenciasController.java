@@ -33,7 +33,6 @@ public class SugerenciasController {
         return ResponseEntity.noContent().build();
     }
 
-
     @PostMapping("/sugerencias")
     public ResponseEntity<Sugerencia> createOffer(@RequestBody Sugerencia sugerencia) {
         Sugerencia newSugerencia = sugerenciasService.insertSugerencia(sugerencia);

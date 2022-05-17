@@ -5,6 +5,8 @@
 .input {
     display: grid;
     place-content: center;
+    font-size: 1.15rem;
+    padding-bottom:5px;
 }
 
 .boton {
@@ -22,5 +24,12 @@
 }
 
 .imagen {
-    size:44px;
+    width:100%;
+    text-align:center;
+}
+
+.center {
+    padding-bottom:40px;
+    display: block;
+    margin: auto;
 }
