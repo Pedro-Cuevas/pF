@@ -1,19 +1,3 @@
-/*const getId = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).id;
-}
-const getNombre = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).userName;
-}
-const getApellido = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).userSurname;
-}
-const getEmail = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).userEmail;
-}
-const getEstudios = () => {
-    return JSON.parse(localStorage.getItem("userLoggedIn")).userStudies;
-}*/
-
 const getId = () => {
     return JSON.parse(localStorage.getItem("userLoggedIn")).id;
 }
@@ -101,32 +85,13 @@ const deleteApplication = async (id) => {
 
 //////////////////////////////////////////////////////////////////////
 const noLogin = async (id) => {
-    /*let txt_body = '{ "id": "'
-        + id
-        + '", "userId": "'
-        + id
-        + '", "isLogged": "'
-        + 0
-        + '"}';
-
-    let request = await fetch("/api/v1/login/" + id, {
-        body: txt_body,
-        method: 'PUT',
-        headers: {
-            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
-        },
-        dataType: "json",
+    let request2 = await fetch("/api/v1/logout",{
+        method : 'POST'
     });
-
-    if(request.ok) {*/
-        let request2 = await fetch("/api/v1/logout",{
-            method : 'POST'
-        });
-        if(request2.ok){
-            console.log("sesión cerrada");
-        }
+    if(request2.ok){
+        console.log("sesión cerrada");
+    }
         
-    //}
 }
 /////////////////////////////////////////////////////////////////////
 
@@ -138,6 +103,9 @@ const getNombreUsuario = async () => {
     if(request.ok) {
         let res = await request.text();
         console.log(res);
+        if(res == "Admin"){
+            window.location.href = '/perfilAdmin.html';
+        } 
         setUser(res);
     }
 }
@@ -152,58 +120,41 @@ const setUser = async (nombre) => {
         
         res.forEach(obj =>{
             if(obj.userName == nombre){
-                /*let txt_body = '{ "id": "'
-                    + obj.id
-                    + '", "userId": "'
-                    + obj.id
-                    + '", "isLogged": "'
-                    + 1
-                    + '"}';*/
                 setNombre(obj.userName, obj.userSurname, obj.userEmail, obj.userStudies);
                 localStorage.setItem("userLoggedIn", JSON.stringify(obj));
-                //localStorage.setItem("hayLogin", true);
-                //setLogin(obj.id, txt_body);
             }
         });
     }
 }
 
-/*const setLogin = async (id, txt_body) => {
-    console.log(id);
-    let request2 = await fetch("/api/v1/login/" + id, {
-        body: txt_body,
-        method: 'PUT',
-        //body: txt_body,
-        headers: {
-            "Content-Type": "application/json", // Indico que mis datos van a estar en JSON
-        },
-        dataType: "json",
-    });
-
-    if(request2.ok) {
-        console.log("Bienvenido");
-    }
-}*/
-
+/*
 //Checks if user is not admin in order to direct to page
 const begin = async () => {
-    let user = JSON.parse(localStorage.getItem("userLoggedIn"));
     let isAdmin = true;
-    let requestUsers = await fetch("/api/v1/users", {
+    let request = await fetch("/api/v1/login", {
         method: 'GET',
     });
 
-    if(requestUsers.ok) {
-        let userList = await requestUsers.json();
-
-        userList.forEach(obj => {
-            if((obj.userName ===  user.userName)&&(obj.role != "ROLE_ADMIN")){
-                isAdmin = false;
-            } else if ((obj.userName ===  user.userName)&&(obj.role == "ROLE_ADMIN")) {
-                isAdmin = true;
-            }
+    if(request.ok) {
+        let user = await request.text();
+        
+        let requestUsers = await fetch("/api/v1/users", {
+            method: 'GET',
         });
-    }    
+
+        if(requestUsers.ok) {
+            let userList = await requestUsers.json();
+
+            userList.forEach(obj => {
+                if((obj.userName ===  user)&&(obj.role != "ROLE_ADMIN")){
+                    isAdmin = false;
+                } else if ((obj.userName ===  user)&&(obj.role == "ROLE_ADMIN")) {
+                    document.getElementById("nombreLogin").innerHTML = obj.userName;
+                }
+            });
+        }
+    }
+    
 
     if(isAdmin){
         window.location.href = '/perfilAdmin.html';
@@ -212,15 +163,12 @@ const begin = async () => {
     }
 }
 
-begin();
+begin();*/
 
 
 
 //////////////////////////////////////////////////////////////////////
 getNombreUsuario();
-//setNombre(getNombre(), getApellido());
-//setEmail(getEmail());
-//setEstudios(getEstudios());
 $("#btnTab2").click(() => getOffersAndDisplay())
 $("#cerrarSesion").click(() => noLogin(getId()));
 

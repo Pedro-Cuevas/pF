@@ -131,8 +131,6 @@ const getOffersAndDisplay = async () => {
         });
     }
 
-    //let val = $('#inputDateBegining').val();
-    //console.log(val);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
