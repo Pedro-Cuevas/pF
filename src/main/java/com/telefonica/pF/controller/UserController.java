@@ -42,11 +42,11 @@ public class UserController {
         return ResponseEntity.ok().body(respuesta);
     }
 
-    @GetMapping("/users/login")
+    /*@GetMapping("/users/login")
     public ResponseEntity<UserModel> getUserLoggedIn(){
         UserModel respuesta = userService.getUserLoggedIn();
         return ResponseEntity.ok().body(respuesta);
-    }
+    }*/
 
     @PutMapping("/users/{id}")
     public ResponseEntity<UserModel> updateUser(@PathVariable String id, @RequestBody UserModel user){

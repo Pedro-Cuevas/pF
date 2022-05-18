@@ -13,8 +13,8 @@ public interface UserRepository extends CrudRepository<UserModel, String>{
     @Query("SELECT * FROM USER WHERE USER.ID= :id")
     public Iterable<UserModel> retrieveUser(String id);
 
-    @Query("SELECT * FROM USER INNER JOIN DETECTARLOGIN ON DETECTARLOGIN.USER_ID=USER.ID WHERE DETECTARLOGIN.IS_LOGGED= :log")
-    public Iterable<UserModel> getUserLoggedIn(int log);
+    //@Query("SELECT * FROM USER INNER JOIN DETECTARLOGIN ON DETECTARLOGIN.USER_ID=USER.ID WHERE DETECTARLOGIN.IS_LOGGED= :log")
+    //public Iterable<UserModel> getUserLoggedIn(int log);
 
     public UserModel findByUserName(String userName);
     //no tengo que poner @query porque el find by ya sabe por qué estoy buscando

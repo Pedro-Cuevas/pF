@@ -3,7 +3,6 @@ Práctica Final PAT
 
 ## ToDo
 
-- Testing E2E de la tabla de decectar Login
 - (No es importante) En los tests E2E, hacer uso de los constructores en vez de getters y setters
 - Eliminar basura
 - Hacer que brcypt funcione
