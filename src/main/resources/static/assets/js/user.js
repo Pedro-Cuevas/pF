@@ -24,7 +24,6 @@ const getID = async (email) => {
                 id = obj.id;
             }
         });
-        //console.log(id);
         return id;
     }
 }
@@ -91,7 +90,6 @@ const noLogin = async (id) => {
         method : 'POST'
     });
     if(request2.ok){
-        console.log("sesión cerrada");
     }
         
 }
@@ -104,7 +102,6 @@ const getNombreUsuario = async () => {
 
     if(request.ok) {
         let res = await request.text();
-        console.log(res);
         if(res == "Admin"){
             window.location.href = '/perfilAdmin.html';
         } 
@@ -129,7 +126,7 @@ const setUser = async (nombre) => {
     }
 }
 
-/*
+
 //Checks if user is not admin in order to direct to page
 const begin = async () => {
     let isAdmin = true;
@@ -160,12 +157,10 @@ const begin = async () => {
 
     if(isAdmin){
         window.location.href = '/perfilAdmin.html';
-    } else {
-        window.location.href = '/user.html';
-    }
+    } 
 }
 
-begin();*/
+begin();
 
 
 

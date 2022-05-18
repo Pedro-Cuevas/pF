@@ -31,7 +31,6 @@ const deleteOfferAndUpdate = async (id) => {
     });
 
     if(request.ok) {
-        console.log("oferta eliminada");
         getOffersAndDisplay();        
     }
 }
@@ -56,8 +55,6 @@ const createOfferAndDisplay = async () => {
         + $('#available').val()
         + '"}';
 
-    console.log(txt_body)
-
     let request = await fetch("/api/v1/offers", {
         method: 'POST',
         body: txt_body,
@@ -68,7 +65,6 @@ const createOfferAndDisplay = async () => {
     });
 
     if(request.ok) {
-        console.log("oferta creada");
         clearAll();
         getOffersAndDisplay();
     }
@@ -182,8 +178,6 @@ const updateOffers = async (id) => {
         let obj = await request.json();
         let begin;
         let end;
-        console.log(obj.dateBegining);
-        //console.log($('#inputDateBegining').val());
         if(($('#inputDateBegining').val() == obj.dateBegining) && ($('#inputDateEnd').val() ==obj.dateEnd)){
             begin = $('#inputDateBegining').val();
             end = $('#inputDateEnd').val();
@@ -228,7 +222,6 @@ const updateOffers = async (id) => {
         });
 
         if(request2.ok) {
-            console.log("oferta actualizada");
             clearAll();
             getOffersAndDisplay();
         }

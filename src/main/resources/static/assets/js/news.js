@@ -9,7 +9,6 @@ const getNewsAndDisplay = async () => {
 
     if(request.ok) {
         let res = await request.json();
-        console.log(res);
         let text = '<ul class="list-group">';
         res.articles.forEach(obj => {
             text += '<li class="list-group-item"><a href="'
@@ -33,12 +32,10 @@ const setNombre = async () => {
 
     if(request.ok) {
         let res = await request.text();
-        console.log(res);
         if(res == "anonymousUser"){
             document.getElementById("nombreLogin").innerHTML = "Registro";
             document.getElementById("nombreLogin").href = "./register.html";
         } else if(res == "Admin"){
-            console.log("Admin");
             document.getElementById("nombreLogin").innerHTML = res;
             document.getElementById("nombreLogin").href = "./perfilAdmin.html";
         } else {

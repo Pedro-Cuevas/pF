@@ -18,7 +18,6 @@ const createSugerencia = async () => {
     });
 
     if(request.ok) {
-        console.log(txt_body);
         $('#modal').modal('show');
     }
 }
@@ -35,12 +34,10 @@ const setNombre = async () => {
 
     if(request.ok) {
         let res = await request.text();
-        console.log(res);
         if(res == "anonymousUser"){
             document.getElementById("nombreLogin").innerHTML = "Registro";
             document.getElementById("nombreLogin").href = "./register.html";
         } else if(res == "Admin"){
-            console.log("Admin");
             document.getElementById("nombreLogin").innerHTML = res;
             document.getElementById("nombreLogin").href = "./perfilAdmin.html";
         } else {

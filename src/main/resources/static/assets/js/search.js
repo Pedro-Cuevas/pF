@@ -26,7 +26,6 @@ const setNombre = async () => {
         let res = await request.text();
         setId(res);
         if(res == "Admin"){
-            console.log("Admin");
             document.getElementById("nombreLogin").innerHTML = res;
             document.getElementById("nombreLogin").href = "./perfilAdmin.html";
         } else {
@@ -46,7 +45,6 @@ const getOffersAndDisplay = async () => {
 
     if(request.ok) {
         let res = await request.json();
-        //console.log(res);
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
@@ -102,7 +100,6 @@ const createNewApplication = async (txt_body) => {
 
     if(request.ok) {
         let res = await request.json();
-        console.log(res);
     }
 }
 
@@ -141,7 +138,6 @@ const filterByOne = async (beg, filter) => {
 
     if(request.ok) {
         let res = await request.json();
-        //console.log(res);
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
@@ -191,7 +187,6 @@ const filterByTwo = async (val, filter1, filter2) => {
 
     if(request.ok) {
         let res = await request.json();
-        //console.log(res);
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {
@@ -238,7 +233,6 @@ const filterByAll = async (name, beg, end) => {
 
     if(request.ok) {
         let res = await request.json();
-        //console.log(res);
 
         let text = '<center> <ul class="list-group">';
         res.forEach(obj => {

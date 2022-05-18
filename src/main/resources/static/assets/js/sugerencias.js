@@ -16,7 +16,6 @@ const createSugerencia = async () => {
     });
 
     if(request.ok) {
-        console.log(txt_body);
         $('#modal').modal('show');
     }
 }
@@ -50,7 +49,6 @@ const setNombre = async () => {
         let res = await request.text();
         setId(res);
         if(res == "Admin"){
-            console.log("Admin");
             document.getElementById("nombreLogin").innerHTML = res;
             document.getElementById("nombreLogin").href = "./perfilAdmin.html";
         } else {
