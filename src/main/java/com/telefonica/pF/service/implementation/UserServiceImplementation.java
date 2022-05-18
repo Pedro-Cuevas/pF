@@ -70,7 +70,7 @@ public class UserServiceImplementation implements UserService {
     public UserModel insertUser(UserModel user){
         return userRepository.save(user);
     }
-
+    /*
     @Override
     public UserModel getUserLoggedIn(){
         int log = 1;
@@ -81,7 +81,7 @@ public class UserServiceImplementation implements UserService {
         }
         return response;            
     }
-
+    */
 
     @Override
     public UserDetails loadUserByUsername(String userName) {

@@ -10,7 +10,7 @@ public interface UserService extends UserDetailsService {
     UserModel updateUser(String id, UserModel user);
     void deleteUser(String id);
     UserModel insertUser(UserModel user);
-    UserModel getUserLoggedIn();
+    //UserModel getUserLoggedIn();
     UserModel create(UserModel user);
 
 }
