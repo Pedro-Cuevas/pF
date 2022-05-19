@@ -19,11 +19,3 @@ Por el contrario, si se entra desde el perfil de Admin, se podrá acceder al ges
 Por último, siempre se podrá cerrar sesión, desde el perfil del usuario o del administrador, para lo que la web te devuelve a la página principal.
 
 ## Pedro Cuevas e Isabela Goetsch
-
-## ToDo
-
-- (No es importante) En los tests E2E, hacer uso de los constructores en vez de getters y setters
-- Hacer que brcypt funcione
-- Buscar errores y probarlo todo
-- Conseguir que se vea bien en formatos móviles la web de bolsa
-- Documentar entrega
