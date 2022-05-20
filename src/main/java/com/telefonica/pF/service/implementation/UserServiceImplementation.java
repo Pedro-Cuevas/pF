@@ -17,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//import java.nio.charset.StandardCharsets;
-//import java.util.Base64;
 
 @Service
 public class UserServiceImplementation implements UserService {
@@ -70,18 +68,6 @@ public class UserServiceImplementation implements UserService {
     public UserModel insertUser(UserModel user){
         return userRepository.save(user);
     }
-    /*
-    @Override
-    public UserModel getUserLoggedIn(){
-        int log = 1;
-        Iterable<UserModel> users = userRepository.getUserLoggedIn(log);
-        UserModel response = null;
-        for(UserModel user : users){
-                response = user;
-        }
-        return response;            
-    }
-    */
 
     @Override
     public UserDetails loadUserByUsername(String userName) {

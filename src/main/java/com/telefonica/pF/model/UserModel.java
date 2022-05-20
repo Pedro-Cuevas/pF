@@ -1,9 +1,14 @@
 package com.telefonica.pF.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.Builder;
 import lombok.Data;
@@ -116,6 +121,17 @@ public class UserModel {
     public void setUserStudies(String userStudies) {
         this.userStudies = userStudies;
     }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+ 
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    
+    
+        authorities.add(new SimpleGrantedAuthority(role));
+ 
+ 
+    return authorities;
+}
 
 
 

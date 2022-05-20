@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,12 +41,6 @@ public class UserController {
         return ResponseEntity.ok().body(respuesta);
     }
 
-    /*@GetMapping("/users/login")
-    public ResponseEntity<UserModel> getUserLoggedIn(){
-        UserModel respuesta = userService.getUserLoggedIn();
-        return ResponseEntity.ok().body(respuesta);
-    }*/
-
     @PutMapping("/users/{id}")
     public ResponseEntity<UserModel> updateUser(@PathVariable String id, @RequestBody UserModel user){
         UserModel newUser = userService.updateUser(id, user);
@@ -62,11 +55,8 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<UserModel> createUser(@RequestBody UserModel user) {
-
-        /*
         String hashedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(hashedPassword); //para guardar la contraseña con hash
-        */
 
         UserModel newUser = userService.create(user);
         return ResponseEntity.ok().body(newUser);
