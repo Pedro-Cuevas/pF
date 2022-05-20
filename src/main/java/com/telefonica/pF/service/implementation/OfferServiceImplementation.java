@@ -1,5 +1,6 @@
 package com.telefonica.pF.service.implementation;
 
+import com.telefonica.pF.join.OfferAppJoin;
 import com.telefonica.pF.model.Offer;
 import com.telefonica.pF.repository.OfferRepository;
 import com.telefonica.pF.service.OfferService;
@@ -23,17 +24,17 @@ public class OfferServiceImplementation implements OfferService{
     }
 
     @Override
-    public Iterable<Offer> getOffersWithApplication(String id){
+    public Iterable<OfferAppJoin> getOffersWithApplication(String id){
         return offerRepository.getOffersWithApplication(id);
     }
 
     @Override
-    public Iterable<Offer> getAllOffers(){
+    public Iterable<OfferAppJoin> getAllOffers(){
         return offerRepository.getAllOffers();
     }
     
     @Override
-    public Iterable<Offer> getEmptyOffers(){
+    public Iterable<OfferAppJoin> getEmptyOffers(){
         return offerRepository.getEmptyOffers();
     }
 

@@ -1,5 +1,6 @@
 package com.telefonica.pF.controller;
 
+import com.telefonica.pF.join.OfferAppJoin;
 import com.telefonica.pF.model.Offer;
 import com.telefonica.pF.service.OfferService;
 
@@ -31,25 +32,25 @@ public class OfferController {
     }
 
     @GetMapping("/offers/with-application/{id}")
-    public ResponseEntity<Iterable<Offer>> getOffersWithApplication(@PathVariable String id) {
+    public ResponseEntity<Iterable<OfferAppJoin>> getOffersWithApplication(@PathVariable String id) {
 
-        Iterable<Offer> response = offerService.getOffersWithApplication(id);
+        Iterable<OfferAppJoin> response = offerService.getOffersWithApplication(id);
 
         return ResponseEntity.ok().body(response);
     }
 
     @GetMapping("/offers/and-applications")
-    public ResponseEntity<Iterable<Offer>> getAllOffers() {
+    public ResponseEntity<Iterable<OfferAppJoin>> getAllOffers() {
 
-        Iterable<Offer> response = offerService.getAllOffers();
+        Iterable<OfferAppJoin> response = offerService.getAllOffers();
 
         return ResponseEntity.ok().body(response);
     }
 
     @GetMapping("/offers/without-application")
-    public ResponseEntity<Iterable<Offer>> getEmtpyOffers() {
+    public ResponseEntity<Iterable<OfferAppJoin>> getEmtpyOffers() {
 
-        Iterable<Offer> response = offerService.getEmptyOffers();
+        Iterable<OfferAppJoin> response = offerService.getEmptyOffers();
 
         return ResponseEntity.ok().body(response);
     }

@@ -67,7 +67,7 @@ const editApplication = async (user_id, offer_id) => {
         let res = await request.json();
         res.forEach(obj => {
             if(obj.offerId == offer_id && obj.userId == user_id){
-                deleteApplication(obj.id);
+                deleteApplication(obj.appId);
             }
         });
 

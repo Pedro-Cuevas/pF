@@ -14,7 +14,7 @@ import lombok.Data;
 public class Application {
 
     @Id
-    private String id;
+    private String appId;
 
     private String offerId;
     private String userId;
@@ -23,20 +23,19 @@ public class Application {
     public Application() {}
 
 
-    public Application(String id, String offerId, String userId) {
-        this.id = id;
+    public Application(String appId, String offerId, String userId) {
+        this.appId = appId;
         this.offerId = offerId;
         this.userId = userId;
     }
 
 
-
-    public String getId() {
-        return this.id;
+    public String getAppId() {
+        return this.appId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getOfferId() {
@@ -55,6 +54,7 @@ public class Application {
         this.userId = userId;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -63,12 +63,12 @@ public class Application {
             return false;
         }
         Application application = (Application) o;
-        return Objects.equals(id, application.id) && Objects.equals(offerId, application.offerId) && Objects.equals(userId, application.userId);
+        return Objects.equals(appId, application.appId) && Objects.equals(offerId, application.offerId) && Objects.equals(userId, application.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, offerId, userId);
+        return Objects.hash(appId, offerId, userId);
     }
     
 }

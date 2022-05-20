@@ -1,5 +1,6 @@
 package com.telefonica.pF.repository;
 
+import com.telefonica.pF.join.OfferAppJoin;
 import com.telefonica.pF.model.Offer;
 
 import org.springframework.data.jdbc.repository.query.Query;
@@ -13,12 +14,12 @@ public interface OfferRepository extends CrudRepository<Offer,String> {
     public Iterable<Offer> getOfferByID(String id);
 
     @Query("SELECT * FROM OFFER INNER JOIN APPLICATIONS ON OFFER.ID=APPLICATIONS.OFFER_ID WHERE APPLICATIONS.USER_ID= :id")
-    public Iterable<Offer> getOffersWithApplication(String id);
+    public Iterable<OfferAppJoin> getOffersWithApplication(String id);
 
     @Query("SELECT * FROM OFFER LEFT OUTER JOIN APPLICATIONS ON OFFER.ID=APPLICATIONS.OFFER_ID")
-    public Iterable<Offer> getAllOffers();
+    public Iterable<OfferAppJoin> getAllOffers();
 
     @Query("SELECT * FROM OFFER LEFT OUTER JOIN APPLICATIONS ON OFFER.ID=APPLICATIONS.OFFER_ID WHERE APPLICATIONS.OFFER_ID IS NULL")
-    public Iterable<Offer> getEmptyOffers();
+    public Iterable<OfferAppJoin> getEmptyOffers();
 }
 

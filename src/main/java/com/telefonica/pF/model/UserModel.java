@@ -122,19 +122,6 @@ public class UserModel {
         this.userStudies = userStudies;
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
- 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-    
-    
-        authorities.add(new SimpleGrantedAuthority(role));
- 
- 
-    return authorities;
-}
-
-
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
