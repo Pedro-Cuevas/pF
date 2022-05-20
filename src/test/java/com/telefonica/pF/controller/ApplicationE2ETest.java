@@ -56,7 +56,7 @@ public class ApplicationE2ETest {
     @Test
     public void applicationPutTest(){
         Application newAppPut = new Application();
-        newAppPut.setId("2");
+        newAppPut.setAppId("2");
         newAppPut.setOfferId("3");
         newAppPut.setUserId("2");
 
@@ -106,7 +106,7 @@ public class ApplicationE2ETest {
         while(iterator.hasNext()){
             last = (Application) iterator.next();
         }
-        newAppPost.setId(last.getId());
+        newAppPost.setAppId(last.getAppId());
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(last);
